@@ -1,1 +1,1 @@
-include ':license-fragment'
+include ':license-fragment', ':license-fragment-example'
