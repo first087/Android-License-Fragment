@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LicenseFragment.iml" filepath="$PROJECT_DIR$/LicenseFragment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/license-fragment/license-fragment.iml" filepath="$PROJECT_DIR$/license-fragment/license-fragment.iml" />
+    </modules>
+  </component>
+</project>
