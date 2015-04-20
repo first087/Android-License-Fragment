@@ -1,7 +1,6 @@
 package com.ethanf.licensefragment;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ScrollViewLicenseFragment.OnFragmentInteractionListener} interface
+ * {@link OnAttachedListener} interface
  * to handle interaction events.
  * Use the {@link ScrollViewLicenseFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -26,8 +25,6 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     /**
      * Use this factory method to create a new instance of
@@ -67,28 +64,21 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
         return inflater.inflate(R.layout.fragment_scroll_view_license, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mOnAttachedListener = (OnAttachedListener) activity;
+            mOnAttachedListener.onAttached();
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+            e.printStackTrace();
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mOnAttachedListener = null;
     }
 
     @Override
@@ -103,21 +93,6 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
         super.onRestoreState(savedInstanceState);
 
         // TODO : Restore State
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
     }
 
 }

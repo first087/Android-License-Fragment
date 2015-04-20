@@ -6,6 +6,8 @@ import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFra
 
 public abstract class LicenseFragmentBase extends StatedFragment {
 
+    protected OnAttachedListener mOnAttachedListener;
+
     @Override
     protected void onFirstTimeLaunched() {
         super.onFirstTimeLaunched();
@@ -25,6 +27,10 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         super.onRestoreState(savedInstanceState);
 
         // TODO : Restore State
+    }
+
+    public interface OnAttachedListener {
+        void onAttached();
     }
 
 }
