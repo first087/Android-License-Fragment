@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
@@ -46,10 +45,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-//        if (fragmentId == position + 1) return;
-
-        fragmentId = position + 1;
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
 
@@ -73,16 +68,15 @@ public class MainActivity extends ActionBarActivity
         }
 
         // update the main content by replacing fragments
-        Log.i("aaaaa", "update the main content by replacing fragments");
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
+
+        fragmentId = position + 1;
     }
 
     @Override
     public void onAttached() {
-        Log.i("aaaaa", "onAttached");
-        Log.i("aaaaa", "fragmentId = " + fragmentId);
         switch (fragmentId) {
             case 1: mTitle = getString(R.string.title_section1); break;
             case 2: mTitle = getString(R.string.title_section2); break;
@@ -91,8 +85,6 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        Log.i("aaaaa", "restoreActionBar");
-        Log.i("aaaaa", "mTitle = " + mTitle);
         ActionBar actionBar = getSupportActionBar();
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);

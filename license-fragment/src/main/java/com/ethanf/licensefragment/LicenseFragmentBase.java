@@ -3,9 +3,15 @@ package com.ethanf.licensefragment;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.ethanf.licensefragment.controller.LicenseManager;
+import com.ethanf.licensefragment.model.License;
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 
+import java.util.LinkedHashSet;
+
 public abstract class LicenseFragmentBase extends StatedFragment {
+
+    private static final String ARG_LICENSE_IDS = "license_ids";
 
     public interface OnAttachedListener {
         void onAttached();
@@ -18,6 +24,12 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     protected LicenseFragmentBase() {
         super();
         mLicenseChain = true;
+    }
+
+    protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
+        Bundle bundle = new Bundle();
+        bundle.putIntArray(ARG_LICENSE_IDS, licenseIDs);
+        fragment.setArguments(bundle);
     }
 
     @Override
@@ -35,22 +47,13 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     protected void onFirstTimeLaunched() {
         super.onFirstTimeLaunched();
 
-        // TODO : Initial one time on create fragment
+        int[] licenseIDs = getArguments().getIntArray(ARG_LICENSE_IDS);
+
+        LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
+        onFirstTimeLaunched(licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs));
     }
 
-    @Override
-    protected void onRestoreState(Bundle savedInstanceState) {
-        super.onRestoreState(savedInstanceState);
-
-        // TODO : Restore State
-    }
-
-    @Override
-    protected void onSaveState(Bundle outState) {
-        super.onSaveState(outState);
-
-        // TODO : Save State
-    }
+    protected abstract void onFirstTimeLaunched(LinkedHashSet<License> licenses);
 
     @Override
     public void onDetach() {

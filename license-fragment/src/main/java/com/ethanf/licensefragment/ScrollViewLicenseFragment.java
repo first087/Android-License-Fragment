@@ -21,8 +21,6 @@ import java.util.LinkedHashSet;
  * create an instance of this fragment.
  */
 public class ScrollViewLicenseFragment extends LicenseFragmentBase {
-    private static final String ARG_LICENSE_IDS = "license_ids";
-
     private TextView tvLicense;
 
     /**
@@ -35,9 +33,9 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     // TODO: Rename and change types and number of parameters
     public static ScrollViewLicenseFragment newInstance(int[] licenseIDs) {
         ScrollViewLicenseFragment fragment = new ScrollViewLicenseFragment();
-        Bundle args = new Bundle();
-        args.putIntArray(ARG_LICENSE_IDS, licenseIDs);
-        fragment.setArguments(args);
+
+        onNewInstance(fragment, licenseIDs);
+
         return fragment;
     }
 
@@ -53,14 +51,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched() {
-        super.onFirstTimeLaunched();
-
-        int[] licenseIDs = getArguments().getIntArray(ARG_LICENSE_IDS);
-
-        LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
-        LinkedHashSet<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs);
-
+    protected void onFirstTimeLaunched(LinkedHashSet<License> licenses) {
         tvLicense.setText("");
         for (License license : licenses) {
             tvLicense.append(license.getTitle() + "\n");
