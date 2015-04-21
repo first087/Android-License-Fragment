@@ -10,7 +10,7 @@ License Fragment for Android
 
 #### Code Example
 ```java
-Fragment fragment = ScrollViewLicenseFragment.newInstance({ LicenseID.GSON, LicenseID.RETROFIT });
+Fragment fragment = ScrollViewLicenseFragment.newInstance(new int[] { LicenseID.GSON, LicenseID.RETROFIT });
 ```
 
 #### Support license for Library
