@@ -7,14 +7,16 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        android:layout_gravity="top" >
+        android:layout_gravity="top">
 
         <TextView
+            android:id="@+id/tvLicense"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="16dp"
             android:text="@string/license_fragment_library" />
     </ScrollView>
 

@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/license-fragment" />
+            <option value="$PROJECT_DIR$/license-fragment-example" />
           </set>
         </option>
       </GradleProjectSettings>
