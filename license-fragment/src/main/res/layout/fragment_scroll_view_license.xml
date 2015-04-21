@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.ethanf.licensefragment.ScrollViewLicenseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"

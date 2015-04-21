@@ -7,20 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ethanf.licensefragment.controller.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 
 import java.util.LinkedHashSet;
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link OnAttachedListener} interface
- * to handle interaction events.
  * Use the {@link ScrollViewLicenseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ScrollViewLicenseFragment extends LicenseFragmentBase {
+
     private TextView tvLicense;
 
     /**
