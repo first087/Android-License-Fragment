@@ -9,6 +9,11 @@ import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFra
 
 import java.util.LinkedHashSet;
 
+/**
+ * Activities that contain this fragment must implement the
+ * {@link OnAttachedListener} interface
+ * to handle interaction events.
+ */
 public abstract class LicenseFragmentBase extends StatedFragment {
 
     private static final String ARG_LICENSE_IDS = "license_ids";

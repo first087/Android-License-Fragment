@@ -1,23 +1,18 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ethanf.licensefragment.ScrollViewLicenseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <TextView
+        android:id="@+id/tvLicense"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top">
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/license_fragment_library" />
 
-        <TextView
-            android:id="@+id/tvLicense"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:text="@string/license_fragment_library" />
-    </ScrollView>
-
-</FrameLayout>
+</ScrollView>
