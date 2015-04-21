@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
 import com.ethanf.licensefragment.LicenseFragmentBase;
+import com.ethanf.licensefragment.ListViewLicenseFragment;
+import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
 import com.ethanf.licensefragment.model.LicenseID;
 
@@ -53,16 +55,16 @@ public class MainActivity extends ActionBarActivity
         switch (position) {
             case 0:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ScrollViewLicenseFragment) return;
-                fragment = ScrollViewLicenseFragment.newInstance(licenseIds).withLicenseChain(true);
+                fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
                 break;
-//            case 1:
-//                if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewViewLicenseFragment) return;
-//                fragment = ListViewViewLicenseFragment.newInstance(null, null);
-//                break;
-//            case 2:
-//                if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
-//                fragment = RecyclerViewLicenseFragment.newInstance(null, null);
-//                break;
+            case 1:
+                if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewLicenseFragment) return;
+                fragment = ListViewLicenseFragment.newInstance(licenseIds).withLicenseChain(false);
+                break;
+            case 2:
+                if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
+                fragment = RecyclerViewLicenseFragment.newInstance(licenseIds).withLicenseChain(true);
+                break;
             default:
                 return;
         }
