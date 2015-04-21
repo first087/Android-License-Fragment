@@ -1,12 +1,16 @@
 package com.ethanf.licensefragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.ethanf.licensefragment.controller.LicenseManager;
+import com.ethanf.licensefragment.model.License;
+
+import java.util.LinkedHashSet;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,82 +21,66 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ScrollViewLicenseFragment extends LicenseFragmentBase {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_LICENSE_IDS = "license_ids";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView tvLicense;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param licenseIDs Array of License ID
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScrollViewLicenseFragment newInstance(String param1, String param2) {
+    public static ScrollViewLicenseFragment newInstance(int[] licenseIDs) {
         ScrollViewLicenseFragment fragment = new ScrollViewLicenseFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putIntArray(ARG_LICENSE_IDS, licenseIDs);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public ScrollViewLicenseFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_scroll_view_license, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_scroll_view_license, container, false);
+
+        tvLicense = (TextView) rootView.findViewById(R.id.tvLicense);
+
+        return rootView;
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mOnAttachedListener = (OnAttachedListener) activity;
-            mOnAttachedListener.onAttached();
-        } catch (ClassCastException e) {
-            e.printStackTrace();
+    protected void onFirstTimeLaunched() {
+        super.onFirstTimeLaunched();
+
+        int[] licenseIDs = getArguments().getIntArray(ARG_LICENSE_IDS);
+
+        LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
+        LinkedHashSet<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs);
+
+        tvLicense.setText("");
+        for (License license : licenses) {
+            tvLicense.append(license.getTitle() + "\n");
+            tvLicense.append("-------------------------\n");
+            tvLicense.append(license.getLicense() + "\n\n");
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mOnAttachedListener = null;
-    }
-
-    @Override
-    protected void onSaveState(Bundle outState) {
-        super.onSaveState(outState);
-
-        // TODO : Save State
     }
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
         super.onRestoreState(savedInstanceState);
 
-        // TODO : Restore State
+        tvLicense.setText(savedInstanceState.getCharSequence("license_text"));
+    }
+
+    @Override
+    protected void onSaveState(Bundle outState) {
+        super.onSaveState(outState);
+
+        outState.putCharSequence("license_text", tvLicense.getText());
     }
 
 }

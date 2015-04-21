@@ -5,12 +5,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
 import com.ethanf.licensefragment.LicenseFragmentBase;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
+import com.ethanf.licensefragment.model.LicenseID;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, LicenseFragmentBase.OnAttachedListener {
@@ -25,7 +27,7 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
-    private int fragmentId;
+    private static int fragmentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends ActionBarActivity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        if (savedInstanceState == null) mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -44,27 +46,43 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // TODO : Create Example
+//        if (fragmentId == position + 1) return;
+
+        fragmentId = position + 1;
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
+
+        int[] licenseIds = { LicenseID.RETROFIT };
+
         switch (position) {
-            case 0: fragment = ScrollViewLicenseFragment.newInstance(null, null); break;
-//            case 1: fragment = ListViewViewLicenseFragment.newInstance(null, null); break;
-//            case 2: fragment = RecyclerViewLicenseFragment.newInstance(null, null); break;
-            default: return;
+            case 0:
+                if (fragmentManager.findFragmentById(R.id.container) instanceof ScrollViewLicenseFragment) return;
+                fragment = ScrollViewLicenseFragment.newInstance(licenseIds).withLicenseChain(true);
+                break;
+//            case 1:
+//                if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewViewLicenseFragment) return;
+//                fragment = ListViewViewLicenseFragment.newInstance(null, null);
+//                break;
+//            case 2:
+//                if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
+//                fragment = RecyclerViewLicenseFragment.newInstance(null, null);
+//                break;
+            default:
+                return;
         }
 
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-
+        Log.i("aaaaa", "update the main content by replacing fragments");
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
-
-        fragmentId = position + 1;
     }
 
     @Override
     public void onAttached() {
+        Log.i("aaaaa", "onAttached");
+        Log.i("aaaaa", "fragmentId = " + fragmentId);
         switch (fragmentId) {
             case 1: mTitle = getString(R.string.title_section1); break;
             case 2: mTitle = getString(R.string.title_section2); break;
@@ -73,6 +91,8 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
+        Log.i("aaaaa", "restoreActionBar");
+        Log.i("aaaaa", "mTitle = " + mTitle);
         ActionBar actionBar = getSupportActionBar();
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
