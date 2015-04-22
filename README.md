@@ -2,15 +2,17 @@
 License Fragment for Android
 
 #### License Fragment Goals
-* Easy create open-source licenses UI with Fragment on **1 line**. *(Finish)*
-* Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.) *(Finish)*
-* 3 Simple UI (**ScrollView**, **ListView**, **RecyclerView**) *(Partial)*
+* Easy create open-source licenses UI with Fragment on **1 line**.
+* Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
+* 3 Simples UI (**ScrollView**, **ListView**, **RecyclerView**)
 * Add other license *(Soon)*
 * Customize UI *(Soon)*
 
 #### Code Example
 ```java
 Fragment fragment = ScrollViewLicenseFragment.newInstance(new int[] { LicenseID.GSON, LicenseID.RETROFIT });
+Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.RETROFIT }).withLicenseChain(false);
+Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
 ```
 
 #### Support license for Library
