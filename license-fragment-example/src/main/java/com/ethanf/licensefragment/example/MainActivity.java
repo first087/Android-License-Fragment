@@ -1,10 +1,10 @@
 package com.ethanf.licensefragment.example;
 
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +15,7 @@ import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
 import com.ethanf.licensefragment.model.LicenseID;
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, LicenseFragmentBase.OnAttachedListener {
 
     /**
@@ -88,11 +88,13 @@ public class MainActivity extends ActionBarActivity
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar == null) return;
+
 //        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
