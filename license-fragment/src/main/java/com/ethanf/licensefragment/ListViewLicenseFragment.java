@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.ethanf.licensefragment.model.License;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,7 +47,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(LinkedHashSet<License> licenses) {
+    protected void onFirstTimeLaunched(Collection<License> licenses) {
         // TODO : Set data to view
 
 
