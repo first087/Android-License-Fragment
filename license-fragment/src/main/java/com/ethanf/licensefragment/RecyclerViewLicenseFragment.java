@@ -2,9 +2,12 @@ package com.ethanf.licensefragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
@@ -17,7 +20,7 @@ import java.util.LinkedHashSet;
  */
 public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
-
+    private RecyclerView recyclerView;
 
     /**
      * Use this factory method to create a new instance of
@@ -41,7 +44,9 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
-        // TODO : Matching view
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        //recyclerView.addItemDecoration();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return rootView;
     }
@@ -50,7 +55,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     protected void onFirstTimeLaunched(LinkedHashSet<License> licenses) {
         // TODO : Set data to view
 
-
+        recyclerView.setAdapter(new RecyclerViewAdapter(new String[] { "ทดสอบ 1", "ทดสอบ 2", "ทดสอบ 3", "ทดสอบ 4", "ทดสอบ 5", "ทดสอบ 6", "ทดสอบ 7", "ทดสอบ 8", "ทดสอบ 9", "ทดสอบ 10" }));
 
 
 
@@ -68,6 +73,44 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         super.onSaveState(outState);
 
         // TODO : Save data
+    }
+
+    private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+
+        private String[] data;
+
+        public RecyclerViewAdapter(String[] data) {
+            this.data = data;
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_license, parent, false);
+            return new ViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            holder.tvItemTitle.setText("pos = " + position);
+            holder.tvItemLicense.setText("data = " + data[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.length;
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            public TextView tvItemTitle, tvItemLicense;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+
+                tvItemTitle   = (TextView) itemView.findViewById(R.id.tvItemTitle);
+                tvItemLicense = (TextView) itemView.findViewById(R.id.tvItemLicense);
+            }
+        }
     }
 
 }
