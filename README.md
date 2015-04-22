@@ -15,6 +15,16 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.RE
 Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
 ```
 
+#### Screenshot
+##### ScrollViewLicenseFragment
+![ScrollViewLicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-ScrollViewLicenseFragment.png)
+
+##### ListViewLicenseFragment
+![ListViewLicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-ListViewLicenseFragment.png)
+
+##### RecyclerViewLicenseFragment
+![RecyclerViewLicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-RecyclerViewLicenseFragment.png)
+
 #### Support license for Library
 * [License Fragment](https://github.com/first087/Android-License-Fragment)
 * [StatedFragment](https://github.com/nuuneoi/StatedFragment)
