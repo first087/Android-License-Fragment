@@ -2,12 +2,16 @@ package com.ethanf.licensefragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -17,7 +21,7 @@ import java.util.Collection;
  */
 public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
-
+    private RecyclerView recyclerView;
 
     /**
      * Use this factory method to create a new instance of
@@ -41,33 +45,89 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
-        // TODO : Matching view
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+//        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){ });
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         return rootView;
     }
 
     @Override
     protected void onFirstTimeLaunched(Collection<License> licenses) {
-        // TODO : Set data to view
+        ArrayList<String> titleList = new ArrayList<>();
+        ArrayList<String> licenseList = new ArrayList<>();
 
+        for (License license : licenses) {
+            titleList.add(license.getTitle());
+            licenseList.add(license.getLicense());
+        }
 
-
-
-
+        recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
         super.onRestoreState(savedInstanceState);
 
-        // TODO : Restore data
+        ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
+        ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
+        recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onSaveState(Bundle outState) {
         super.onSaveState(outState);
 
-        // TODO : Save data
+        outState.putStringArrayList("license_title", ((RecyclerViewAdapter) recyclerView.getAdapter()).getTitleList());
+        outState.putStringArrayList("license_text", ((RecyclerViewAdapter) recyclerView.getAdapter()).getLicenseList());
+    }
+
+    private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+
+        private ArrayList<String> titleList, licenseList;
+
+        public RecyclerViewAdapter(ArrayList<String> titleList, ArrayList<String> licenseList) {
+            this.titleList   = titleList;
+            this.licenseList = licenseList;
+        }
+
+        public ArrayList<String> getTitleList() {
+            return titleList;
+        }
+
+        public ArrayList<String> getLicenseList() {
+            return licenseList;
+        }
+
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_license, parent, false);
+            return new ViewHolder(itemView);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            holder.tvItemTitle.setText(titleList.get(position));
+            holder.tvItemLicense.setText(licenseList.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return titleList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+
+            public TextView tvItemTitle, tvItemLicense;
+
+            public ViewHolder(View itemView) {
+                super(itemView);
+
+                tvItemTitle   = (TextView) itemView.findViewById(R.id.tvItemTitle);
+                tvItemLicense = (TextView) itemView.findViewById(R.id.tvItemLicense);
+            }
+        }
     }
 
 }

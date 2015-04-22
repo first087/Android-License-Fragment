@@ -51,6 +51,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     protected void onFirstTimeLaunched(Collection<License> licenses) {
         tvLicense.setText("");
         for (License license : licenses) {
+            tvLicense.append("-------------------------\n");
             tvLicense.append(license.getTitle() + "\n");
             tvLicense.append("-------------------------\n");
             tvLicense.append(license.getLicense() + "\n\n");
