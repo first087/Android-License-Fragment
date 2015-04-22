@@ -35,11 +35,13 @@ public class LicenseManager {
             licenses.add(LicenseID.OTTO);
         }
 
-        for (int licenseID : licenseIDs) {
-            licenses.add(licenseID);
-            if (mLicenseChain) {
-                for (int licenseChainID : getLicenseChains(licenseID)) {
-                    licenses.add(licenseChainID);
+        if (licenseIDs != null) {
+            for (int licenseID : licenseIDs) {
+                licenses.add(licenseID);
+                if (mLicenseChain) {
+                    for (int licenseChainID : getLicenseChains(licenseID)) {
+                        licenses.add(licenseChainID);
+                    }
                 }
             }
         }

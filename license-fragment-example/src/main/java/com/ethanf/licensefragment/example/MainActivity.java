@@ -1,5 +1,7 @@
 package com.ethanf.licensefragment.example;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 2:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
-                fragment = RecyclerViewLicenseFragment.newInstance(licenseIds).withLicenseChain(true);
+                fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
                 break;
             default:
                 return;
@@ -117,7 +119,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_url)));
+            startActivity(myIntent);
             return true;
         }
 
