@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -45,42 +46,58 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        //recyclerView.addItemDecoration();
+//        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){ });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         return rootView;
     }
 
     @Override
     protected void onFirstTimeLaunched(Collection<License> licenses) {
-        // TODO : Set data to view
+        ArrayList<String> titleList = new ArrayList<>();
+        ArrayList<String> licenseList = new ArrayList<>();
 
-        recyclerView.setAdapter(new RecyclerViewAdapter(new String[] { "ทดสอบ 1", "ทดสอบ 2", "ทดสอบ 3", "ทดสอบ 4", "ทดสอบ 5", "ทดสอบ 6", "ทดสอบ 7", "ทดสอบ 8", "ทดสอบ 9", "ทดสอบ 10" }));
+        for (License license : licenses) {
+            titleList.add(license.getTitle());
+            licenseList.add(license.getLicense());
+        }
 
-
-
+        recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
         super.onRestoreState(savedInstanceState);
 
-        // TODO : Restore data
+        ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
+        ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
+        recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onSaveState(Bundle outState) {
         super.onSaveState(outState);
 
-        // TODO : Save data
+        outState.putStringArrayList("license_title", ((RecyclerViewAdapter) recyclerView.getAdapter()).getTitleList());
+        outState.putStringArrayList("license_text", ((RecyclerViewAdapter) recyclerView.getAdapter()).getLicenseList());
     }
 
     private class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-        private String[] data;
+        private ArrayList<String> titleList, licenseList;
 
-        public RecyclerViewAdapter(String[] data) {
-            this.data = data;
+        public RecyclerViewAdapter(ArrayList<String> titleList, ArrayList<String> licenseList) {
+            this.titleList   = titleList;
+            this.licenseList = licenseList;
+        }
+
+        public ArrayList<String> getTitleList() {
+            return titleList;
+        }
+
+        public ArrayList<String> getLicenseList() {
+            return licenseList;
         }
 
         @Override
@@ -91,13 +108,13 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.tvItemTitle.setText("pos = " + position);
-            holder.tvItemLicense.setText("data = " + data[position]);
+            holder.tvItemTitle.setText(titleList.get(position));
+            holder.tvItemLicense.setText(licenseList.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return data.length;
+            return titleList.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
