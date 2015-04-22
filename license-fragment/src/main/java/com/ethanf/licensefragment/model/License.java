@@ -42,7 +42,7 @@ public class License {
     }
 
     public String getLicense() {
-        return readRawFile(rawId);
+        return readRawFile(rawId).trim();
     }
 
     private String readRawFile(int fileId) {
