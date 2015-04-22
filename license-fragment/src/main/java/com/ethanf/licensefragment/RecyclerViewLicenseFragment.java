@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +52,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(LinkedHashSet<License> licenses) {
+    protected void onFirstTimeLaunched(Collection<License> licenses) {
         // TODO : Set data to view
 
         recyclerView.setAdapter(new RecyclerViewAdapter(new String[] { "ทดสอบ 1", "ทดสอบ 2", "ทดสอบ 3", "ทดสอบ 4", "ทดสอบ 5", "ทดสอบ 6", "ทดสอบ 7", "ทดสอบ 8", "ทดสอบ 9", "ทดสอบ 10" }));

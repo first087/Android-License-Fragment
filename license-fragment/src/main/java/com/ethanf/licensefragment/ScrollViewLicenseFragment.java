@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +48,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(LinkedHashSet<License> licenses) {
+    protected void onFirstTimeLaunched(Collection<License> licenses) {
         tvLicense.setText("");
         for (License license : licenses) {
             tvLicense.append(license.getTitle() + "\n");
