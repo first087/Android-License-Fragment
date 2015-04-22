@@ -5,7 +5,8 @@ import android.content.Context;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.model.LicenseID;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 
 /**
  * Created by Artit on 20/4/2558.
@@ -25,25 +26,25 @@ public class LicenseManager {
         return this;
     }
 
-    public LinkedHashSet<License> getLicenses(int[] licenseIDs) {
-        LinkedHashSet<License> licenses = new LinkedHashSet<>();
+    public Collection<License> getLicenses(int[] licenseIDs) {
+        LicenseHashMap licenses = new LicenseHashMap();
 
-        licenses.add(getLicenseById(LicenseID.LICENSE_FRAGMENT));
+        licenses.add(LicenseID.LICENSE_FRAGMENT);
         if (mLicenseChain) {
-            licenses.add(getLicenseById(LicenseID.STATED_FRAGMENT));
-            licenses.add(getLicenseById(LicenseID.OTTO));
+            licenses.add(LicenseID.STATED_FRAGMENT);
+            licenses.add(LicenseID.OTTO);
         }
 
         for (int licenseID : licenseIDs) {
-            licenses.add(getLicenseById(licenseID));
+            licenses.add(licenseID);
             if (mLicenseChain) {
                 for (int licenseChainID : getLicenseChains(licenseID)) {
-                    licenses.add(getLicenseById(licenseChainID));
+                    licenses.add(licenseChainID);
                 }
             }
         }
 
-        return licenses;
+        return licenses.values();
     }
 
     private License getLicenseById(int licenseID) {
@@ -58,5 +59,14 @@ public class LicenseManager {
             // TODO : Add reference license here
             default:                            return new int[] { };
         }
+    }
+
+    private class LicenseHashMap extends LinkedHashMap<Integer, License> {
+
+        public LicenseHashMap add(int licenseID) {
+            put(licenseID, getLicenseById(licenseID));
+            return this;
+        }
+
     }
 }

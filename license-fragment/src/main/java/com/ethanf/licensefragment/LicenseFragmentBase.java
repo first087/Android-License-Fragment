@@ -7,7 +7,7 @@ import com.ethanf.licensefragment.controller.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 
-import java.util.LinkedHashSet;
+import java.util.Collection;
 
 /**
  * Activities that contain this fragment must implement the
@@ -58,7 +58,7 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         onFirstTimeLaunched(licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs));
     }
 
-    protected abstract void onFirstTimeLaunched(LinkedHashSet<License> licenses);
+    protected abstract void onFirstTimeLaunched(Collection<License> licenses);
 
     @Override
     public void onDetach() {
