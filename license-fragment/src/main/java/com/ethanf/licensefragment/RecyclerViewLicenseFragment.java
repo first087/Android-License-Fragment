@@ -1,7 +1,7 @@
 package com.ethanf.licensefragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.ethanf.licensefragment.model.License;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +29,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
      * @param licenseIDs Array of License ID
      * @return A new instance of fragment RecyclerViewLicenseFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static RecyclerViewLicenseFragment newInstance(int[] licenseIDs) {
         RecyclerViewLicenseFragment fragment = new RecyclerViewLicenseFragment();
 
@@ -54,7 +52,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(Collection<License> licenses) {
+    protected void onFirstTimeLaunched(ArrayList<License> licenses) {
         ArrayList<String> titleList = new ArrayList<>();
         ArrayList<String> licenseList = new ArrayList<>();
 
