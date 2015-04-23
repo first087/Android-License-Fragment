@@ -4,18 +4,43 @@ License Fragment for Android
 #### License Fragment Goals
 * Easy create open-source licenses UI with Fragment on **1 line**.
 * Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
-* 3 Simples UI (**ScrollView**, **ListView**, **RecyclerView**)
-* Add other license *(Soon)*
+* 3 Simple UI (**ScrollViewLicenseFragment**, **ListViewLicenseFragment**, **RecyclerViewLicenseFragment**)
+* Add other licenses
 * Customize UI *(Soon)*
+
+#### Support license type (Build-in)
+* Apache License 2.0
+* BSD 3-Clause
+* BSD 2-Clause
+* GPL-3.0
+* MIT license
+
+*Reference - http://opensource.org/licenses*
+
+#### Support license for Library (Build-in)
+* [License Fragment](https://github.com/first087/Android-License-Fragment)
+* [StatedFragment](https://github.com/nuuneoi/StatedFragment)
+* [Gson](https://github.com/google/gson)
+* [Otto](http://square.github.io/otto/)
+* [OkHttp](http://square.github.io/okhttp/)
+* [Retrofit](http://square.github.io/retrofit/)
+* [Picasso](http://square.github.io/picasso/)
 
 #### Code Example
 ```java
+// Create fragment by 1 line.
 Fragment fragment = ScrollViewLicenseFragment.newInstance(new int[] { LicenseID.GSON, LicenseID.RETROFIT });
 Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.RETROFIT }).withLicenseChain(false);
 Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
+
+// Manual add other licenses.
+ArrayList<License> licenses = new ArrayList<>();
+licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2001", "Test Owner 1"));
+licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
+Fragment fragment = RecyclerViewLicenseFragment.newInstance(null)..addLicense(licenses);
 ```
 
-#### Screenshot
+#### Screenshot Example
 ##### ScrollViewLicenseFragment
 ![ScrollViewLicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-ScrollViewLicenseFragment.png)
 
@@ -24,15 +49,6 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseCha
 
 ##### RecyclerViewLicenseFragment
 ![RecyclerViewLicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-RecyclerViewLicenseFragment.png)
-
-#### Support license for Library
-* [License Fragment](https://github.com/first087/Android-License-Fragment)
-* [StatedFragment](https://github.com/nuuneoi/StatedFragment)
-* [Gson](https://github.com/google/gson)
-* [Otto](http://square.github.io/otto/)
-* [OkHttp](http://square.github.io/okhttp/)
-* [Retrofit](http://square.github.io/retrofit/)
-* [Picasso](http://square.github.io/picasso/)
 
 #### License
 ```
