@@ -1,8 +1,10 @@
-# License Fragment
-License Fragment for Android
+# License Fragment 
+**License Fragment Library for Android**
+
+This library for easy create fragment for open-source licenses UI.
 
 #### License Fragment Goals
-* Easy create open-source licenses UI with Fragment on **1 line**.
+* **1 line** create **Fragment** for **open-source licenses** UI.
 * Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
 * 3 Simple UI (**ScrollViewLicenseFragment**, **ListViewLicenseFragment**, **RecyclerViewLicenseFragment**)
 * Add other licenses
