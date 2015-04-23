@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg) ](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
+
 # License Fragment 
 **License Fragment Library for Android**
 
