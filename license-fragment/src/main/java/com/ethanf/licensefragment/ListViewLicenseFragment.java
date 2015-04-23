@@ -1,7 +1,7 @@
 package com.ethanf.licensefragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.ethanf.licensefragment.model.License;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +29,6 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * @param licenseIDs Array of License ID
      * @return A new instance of fragment ListViewLicenseFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ListViewLicenseFragment newInstance(int[] licenseIDs) {
         ListViewLicenseFragment fragment = new ListViewLicenseFragment();
 
@@ -51,7 +49,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(Collection<License> licenses) {
+    protected void onFirstTimeLaunched(ArrayList<License> licenses) {
         ArrayList<String> titleList = new ArrayList<>();
         ArrayList<String> licenseList = new ArrayList<>();
 

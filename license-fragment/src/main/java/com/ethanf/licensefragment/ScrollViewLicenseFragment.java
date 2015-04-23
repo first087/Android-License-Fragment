@@ -1,7 +1,7 @@
 package com.ethanf.licensefragment;
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +27,6 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * @param licenseIDs Array of License ID
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ScrollViewLicenseFragment newInstance(int[] licenseIDs) {
         ScrollViewLicenseFragment fragment = new ScrollViewLicenseFragment();
 
@@ -48,7 +47,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    protected void onFirstTimeLaunched(Collection<License> licenses) {
+    protected void onFirstTimeLaunched(ArrayList<License> licenses) {
         tvLicense.setText("");
         for (License license : licenses) {
             tvLicense.append("-------------------------\n");

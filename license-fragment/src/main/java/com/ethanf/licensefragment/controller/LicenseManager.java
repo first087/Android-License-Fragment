@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.model.LicenseID;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 /**
@@ -26,7 +26,7 @@ public class LicenseManager {
         return this;
     }
 
-    public Collection<License> getLicenses(int[] licenseIDs) {
+    public ArrayList<License> getLicenses(int[] licenseIDs) {
         LicenseHashMap licenses = new LicenseHashMap();
 
         licenses.add(LicenseID.LICENSE_FRAGMENT);
@@ -46,7 +46,7 @@ public class LicenseManager {
             }
         }
 
-        return licenses.values();
+        return new ArrayList<>(licenses.values());
     }
 
     private License getLicenseById(int licenseID) {

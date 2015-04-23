@@ -7,7 +7,7 @@ import com.ethanf.licensefragment.controller.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 /**
  * Activities that contain this fragment must implement the
@@ -25,6 +25,8 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     private OnAttachedListener mOnAttachedListener;
 
     protected boolean mLicenseChain;
+
+    private ArrayList<License> mLicenses;
 
     protected LicenseFragmentBase() {
         super();
@@ -55,10 +57,12 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         int[] licenseIDs = getArguments().getIntArray(ARG_LICENSE_IDS);
 
         LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
-        onFirstTimeLaunched(licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs));
+        ArrayList<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs);
+        if (mLicenses != null) licenses.addAll(mLicenses);
+        onFirstTimeLaunched(licenses);
     }
 
-    protected abstract void onFirstTimeLaunched(Collection<License> licenses);
+    protected abstract void onFirstTimeLaunched(ArrayList<License> licenses);
 
     @Override
     public void onDetach() {
@@ -68,6 +72,12 @@ public abstract class LicenseFragmentBase extends StatedFragment {
 
     public LicenseFragmentBase withLicenseChain(boolean enableLicenseChain) {
         mLicenseChain = enableLicenseChain;
+        return this;
+    }
+
+    public LicenseFragmentBase addLicense(ArrayList<License> licenses) {
+        mLicenses = licenses;
+
         return this;
     }
 

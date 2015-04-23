@@ -2,20 +2,24 @@ package com.ethanf.licensefragment.example;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.widget.DrawerLayout;
 
 import com.ethanf.licensefragment.LicenseFragmentBase;
 import com.ethanf.licensefragment.ListViewLicenseFragment;
 import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
+import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.model.LicenseID;
+import com.ethanf.licensefragment.model.LicenseType;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks, LicenseFragmentBase.OnAttachedListener {
@@ -65,7 +69,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 2:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
-                fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
+                ArrayList<License> licenses = new ArrayList<>();
+                licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
+                licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
+                fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true).addLicense(licenses);
                 break;
             default:
                 return;

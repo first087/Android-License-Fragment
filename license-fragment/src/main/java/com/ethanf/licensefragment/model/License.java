@@ -2,11 +2,7 @@ package com.ethanf.licensefragment.model;
 
 import android.content.Context;
 
-import com.ethanf.licensefragment.R;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import com.ethanf.licensefragment.utils.ResourceManager;
 
 /**
  * Created by Artit on 20/4/2558.
@@ -15,26 +11,36 @@ public class License {
 
     private Context context;
     private String title;
-    private int rawId;
+    private LicenseType licenseType;
+    private String year;
+    private String owner;
 
     public License(Context context, int licenseId) {
         this.context = context;
 
         switch (licenseId) {
             /* ----- This Library ----- */
-            case LicenseID.LICENSE_FRAGMENT:    title = "License Fragment"; rawId = R.raw.licensefragment;  break;
+            case LicenseID.LICENSE_FRAGMENT:    title = "License Fragment"; licenseType = LicenseType.APACHE_LICENSE_20;    year = "2015";  owner = "Artit Kiuwilai";       break;
             /* ----- For This Library ----- */
-            case LicenseID.STATED_FRAGMENT:     title = "StatedFragment";   rawId = R.raw.statedfragment;   break;
+            case LicenseID.STATED_FRAGMENT:     title = "StatedFragment";   licenseType = LicenseType.APACHE_LICENSE_20;    year = "2015";  owner = "Sittiphol Phanvilai";  break;
             /* ----- Google Library ----- */
-            case LicenseID.GSON:                title = "Gson";             rawId = R.raw.gson;             break;
+            case LicenseID.GSON:                title = "Gson";             licenseType = LicenseType.APACHE_LICENSE_20;    year = "2008";  owner = "Google Inc.";          break;
             /* ----- Square Library ----- */
-            case LicenseID.OTTO:                title = "Otto";             rawId = R.raw.otto;             break;
-            case LicenseID.OKHTTP:              title = "OkHttp";           rawId = R.raw.okhttp;           break;
-            case LicenseID.RETROFIT:            title = "Retrofit";         rawId = R.raw.retrofit;         break;
-            case LicenseID.PICASSO:             title = "Picasso";          rawId = R.raw.picasso;          break;
+            case LicenseID.OTTO:                title = "Otto";             licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
+            case LicenseID.OKHTTP:              title = "OkHttp";           licenseType = LicenseType.APACHE_LICENSE_20;    year = "2014";  owner = "Square, Inc.";         break;
+            case LicenseID.RETROFIT:            title = "Retrofit";         licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
+            case LicenseID.PICASSO:             title = "Picasso";          licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
             // TODO : Add new license case here
             default:                            throw new IllegalArgumentException();
         }
+    }
+
+    public License(Context context, String title, LicenseType licenseType, String year, String owner) {
+        this.context     = context;
+        this.title       = title;
+        this.licenseType = licenseType;
+        this.year        = year;
+        this.owner       = owner;
     }
 
     public String getTitle() {
@@ -42,26 +48,7 @@ public class License {
     }
 
     public String getLicense() {
-        return readRawFile(rawId).trim();
+        return String.format(new ResourceManager(context).readRawFile(licenseType), year, owner);
     }
 
-    private String readRawFile(int fileId) {
-        InputStream inputStream = context.getResources().openRawResource(fileId);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-        int i;
-        try {
-            i = inputStream.read();
-            while (i != -1) {
-                byteArrayOutputStream.write(i);
-                i = inputStream.read();
-            }
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
-        }
-
-        return byteArrayOutputStream.toString();
-    }
 }
