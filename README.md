@@ -37,7 +37,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseCha
 ArrayList<License> licenses = new ArrayList<>();
 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2001", "Test Owner 1"));
 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
-Fragment fragment = RecyclerViewLicenseFragment.newInstance(null)..addLicense(licenses);
+Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).addLicense(licenses);
 ```
 
 #### Screenshot Example
