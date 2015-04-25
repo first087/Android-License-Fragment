@@ -17,5 +17,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:22.1.0'
 }
 
-apply from: '../install.gradle'
+apply from: '../maven.gradle'
 apply from: '../bintray.gradle'
