@@ -30,6 +30,13 @@ This library for easy create fragment for open-source licenses UI.
 * [Retrofit](http://square.github.io/retrofit/)
 * [Picasso](http://square.github.io/picasso/)
 
+#### Gradle
+```
+dependencies {
+    compile 'com.ethanf:license-fragment:0.9.1'
+}
+```
+
 #### Code Example
 ```java
 // Create fragment by 1 line.
