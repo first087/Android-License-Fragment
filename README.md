@@ -34,22 +34,35 @@ This library for easy create fragment for open-source licenses UI.
 #### Gradle
 ```groovy
 dependencies {
-    compile 'com.ethanf:license-fragment:0.9.1'
+    compile 'com.ethanf:license-fragment:0.9.2'
 }
 ```
 
 #### Code Example
 ```java
-// Create fragment by 1 line.
-Fragment fragment = ScrollViewLicenseFragment.newInstance(new int[] { LicenseID.GSON, LicenseID.RETROFIT });
-Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.RETROFIT }).withLicenseChain(false);
-Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true);
+// Example input.
+ArrayList<Integer> licenseIds = new ArrayList<>();
+licenseIds.add(LicenseID.GSON);
+licenseIds.add(LicenseID.RETROFIT);
 
-// Manual add other licenses.
+// Example for create fragment by 1 line.
+// Ex1 - Call newInstance() using parameter ArrayList<Integer>
+Fragment fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
+
+// Ex2 - Call newInstance() using parameter array + (Optional) Disable license chain
+Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }).withLicenseChain(false);
+
+// Ex3 - Call newInstance() using without parameter + (Optional) Enable license chain (default)
+Fragment fragment = RecyclerViewLicenseFragment.newInstance().withLicenseChain(true);
+
+// Optional : Add more License and Custom licenses.
 ArrayList<License> licenses = new ArrayList<>();
-licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2001", "Test Owner 1"));
+licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
-Fragment fragment = RecyclerViewLicenseFragment.newInstance(null).addLicense(licenses);
+Fragment fragment = RecyclerViewLicenseFragment.newInstance()
+            .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
+            .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
+            .addCustomLicense(licenses);                    // Add Custom License
 ```
 
 #### Screenshot Example
