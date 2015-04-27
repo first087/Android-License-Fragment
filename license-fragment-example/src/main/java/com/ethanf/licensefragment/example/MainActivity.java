@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
                 ArrayList<License> licenses = new ArrayList<>();
                 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
                 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
-                fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true).addLicense(licenses);
+                fragment = RecyclerViewLicenseFragment.newInstance().withLicenseChain(true).addLicense(licenses);
                 break;
             default:
                 return;

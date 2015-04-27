@@ -37,6 +37,10 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         return fragment;
     }
 
+    public static RecyclerViewLicenseFragment newInstance() {
+        return new RecyclerViewLicenseFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

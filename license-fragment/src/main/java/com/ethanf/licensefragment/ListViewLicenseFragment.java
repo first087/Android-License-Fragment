@@ -37,6 +37,10 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
         return fragment;
     }
 
+    public static ListViewLicenseFragment newInstance() {
+        return new ListViewLicenseFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

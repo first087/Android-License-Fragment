@@ -35,6 +35,10 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
         return fragment;
     }
 
+    public static ScrollViewLicenseFragment newInstance() {
+        return new ScrollViewLicenseFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
