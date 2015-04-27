@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.ethanf.licensefragment.controller.LicenseManager;
 import com.ethanf.licensefragment.model.License;
+import com.ethanf.licensefragment.utils.ArrayManager;
 import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 
 import java.util.ArrayList;
@@ -40,13 +41,8 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     }
 
     protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
-        ArrayList<Integer> licenseList = new ArrayList<>();
-        for (int licenseID : licenseIDs) {
-            licenseList.add(licenseID);
-        }
-
         Bundle bundle = new Bundle();
-        bundle.putIntegerArrayList(ARG_LICENSE_IDS, licenseList);
+        bundle.putIntegerArrayList(ARG_LICENSE_IDS, ArrayManager.asIntegerArrayList(licenseIDs));
         fragment.setArguments(bundle);
     }
 
@@ -83,6 +79,28 @@ public abstract class LicenseFragmentBase extends StatedFragment {
 
     public LicenseFragmentBase withLicenseChain(boolean enableLicenseChain) {
         mLicenseChain = enableLicenseChain;
+        return this;
+    }
+
+    public LicenseFragmentBase addLicense(ArrayList<Integer> licenseIDs) {
+        Bundle bundle = getArguments();
+        ArrayList<Integer> argLicenseIDs = bundle.getIntegerArrayList(ARG_LICENSE_IDS);
+        if (argLicenseIDs == null) argLicenseIDs = new ArrayList<>();
+        argLicenseIDs.addAll(licenseIDs);
+        bundle.putIntegerArrayList(ARG_LICENSE_IDS, argLicenseIDs);
+        setArguments(bundle);
+
+        return this;
+    }
+
+    public LicenseFragmentBase addLicense(int[] licenseIDs) {
+        Bundle bundle = getArguments();
+        ArrayList<Integer> argLicenseIDs = bundle.getIntegerArrayList(ARG_LICENSE_IDS);
+        if (argLicenseIDs == null) argLicenseIDs = new ArrayList<>();
+        argLicenseIDs.addAll(ArrayManager.asIntegerArrayList(licenseIDs));
+        bundle.putIntegerArrayList(ARG_LICENSE_IDS, argLicenseIDs);
+        setArguments(bundle);
+
         return this;
     }
 
