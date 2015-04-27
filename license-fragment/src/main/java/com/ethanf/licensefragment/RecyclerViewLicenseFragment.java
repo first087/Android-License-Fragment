@@ -26,7 +26,22 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs Array of License ID
+     * @param licenseIDs ArrayList<Integer> for License ID
+     * @return A new instance of fragment RecyclerViewLicenseFragment.
+     */
+    public static RecyclerViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
+        RecyclerViewLicenseFragment fragment = new RecyclerViewLicenseFragment();
+
+        onNewInstance(fragment, licenseIDs);
+
+        return fragment;
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param licenseIDs Array for License ID
      * @return A new instance of fragment RecyclerViewLicenseFragment.
      */
     public static RecyclerViewLicenseFragment newInstance(int[] licenseIDs) {
@@ -37,6 +52,12 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         return fragment;
     }
 
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @return A new instance of fragment RecyclerViewLicenseFragment.
+     */
     public static RecyclerViewLicenseFragment newInstance() {
         return new RecyclerViewLicenseFragment();
     }

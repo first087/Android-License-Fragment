@@ -56,7 +56,9 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
 
-        int[] licenseIds = { LicenseID.RETROFIT };
+        ArrayList<Integer> licenseIds = new ArrayList<>();
+        licenseIds.add(LicenseID.GSON);
+        licenseIds.add(LicenseID.RETROFIT);
 
         switch (position) {
             case 0:
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 1:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewLicenseFragment) return;
-                fragment = ListViewLicenseFragment.newInstance(licenseIds).withLicenseChain(false);
+                fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.RETROFIT }).withLicenseChain(false);
                 break;
             case 2:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;

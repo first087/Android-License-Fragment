@@ -33,9 +33,20 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         mLicenseChain = true;
     }
 
-    protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
+    protected static void onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
         Bundle bundle = new Bundle();
-        bundle.putIntArray(ARG_LICENSE_IDS, licenseIDs);
+        bundle.putIntegerArrayList(ARG_LICENSE_IDS, licenseIDs);
+        fragment.setArguments(bundle);
+    }
+
+    protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
+        ArrayList<Integer> licenseList = new ArrayList<>();
+        for (int licenseID : licenseIDs) {
+            licenseList.add(licenseID);
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putIntegerArrayList(ARG_LICENSE_IDS, licenseList);
         fragment.setArguments(bundle);
     }
 
@@ -54,7 +65,7 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     protected void onFirstTimeLaunched() {
         super.onFirstTimeLaunched();
 
-        int[] licenseIDs = getArguments().getIntArray(ARG_LICENSE_IDS);
+        ArrayList<Integer> licenseIDs = getArguments().getIntegerArrayList(ARG_LICENSE_IDS);
 
         LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
         ArrayList<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs);
