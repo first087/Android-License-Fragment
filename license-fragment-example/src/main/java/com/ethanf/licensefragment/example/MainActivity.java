@@ -56,23 +56,30 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
 
-        int[] licenseIds = { LicenseID.RETROFIT };
+        ArrayList<Integer> licenseIds = new ArrayList<>();
+        licenseIds.add(LicenseID.GSON);
+        licenseIds.add(LicenseID.RETROFIT);
 
         switch (position) {
             case 0:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ScrollViewLicenseFragment) return;
-                fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
+                fragment = ScrollViewLicenseFragment.newInstance(licenseIds);   // Call newInstance() using parameter ArrayList<Integer>
                 break;
             case 1:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewLicenseFragment) return;
-                fragment = ListViewLicenseFragment.newInstance(licenseIds).withLicenseChain(false);
+                fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }) // Call newInstance() using parameter array
+                        .withLicenseChain(false);                                               // Disable license chain
                 break;
             case 2:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof RecyclerViewLicenseFragment) return;
                 ArrayList<License> licenses = new ArrayList<>();
                 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
                 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
-                fragment = RecyclerViewLicenseFragment.newInstance(null).withLicenseChain(true).addLicense(licenses);
+                fragment = RecyclerViewLicenseFragment.newInstance()    // Call newInstance() using without parameter
+                        .withLicenseChain(true)                         // Enable license chain (default)
+                        .addLicense(new int[] { LicenseID.PICASSO } )   // Add array (same call newInstance)
+                        .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
+                        .addCustomLicense(licenses);                    // Add Custom License
                 break;
             default:
                 return;

@@ -26,7 +26,22 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs Array of License ID
+     * @param licenseIDs ArrayList<Integer> for License ID
+     * @return A new instance of fragment ListViewLicenseFragment.
+     */
+    public static ListViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
+        ListViewLicenseFragment fragment = new ListViewLicenseFragment();
+
+        onNewInstance(fragment, licenseIDs);
+
+        return fragment;
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param licenseIDs Array for License ID
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance(int[] licenseIDs) {
@@ -35,6 +50,16 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
         onNewInstance(fragment, licenseIDs);
 
         return fragment;
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using without parameter.
+     *
+     * @return A new instance of fragment ListViewLicenseFragment.
+     */
+    public static ListViewLicenseFragment newInstance() {
+        return new ListViewLicenseFragment();
     }
 
     @Override

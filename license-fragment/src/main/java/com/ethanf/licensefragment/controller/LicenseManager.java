@@ -26,7 +26,7 @@ public class LicenseManager {
         return this;
     }
 
-    public ArrayList<License> getLicenses(int[] licenseIDs) {
+    public ArrayList<License> getLicenses(ArrayList<Integer> licenseIDs) {
         LicenseHashMap licenses = new LicenseHashMap();
 
         licenses.add(LicenseID.LICENSE_FRAGMENT);
