@@ -54,7 +54,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
 
     /**
      * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * this fragment using without parameter.
      *
      * @return A new instance of fragment ListViewLicenseFragment.
      */
