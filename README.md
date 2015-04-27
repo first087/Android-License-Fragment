@@ -31,7 +31,7 @@ This library for easy create fragment for open-source licenses UI.
 * [Picasso](http://square.github.io/picasso/)
 
 #### Gradle
-```
+```groovy
 dependencies {
     compile 'com.ethanf:license-fragment:0.9.1'
 }
