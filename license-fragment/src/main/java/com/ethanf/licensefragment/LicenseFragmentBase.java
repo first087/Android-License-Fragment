@@ -86,7 +86,7 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         return this;
     }
 
-    public LicenseFragmentBase addLicense(ArrayList<License> licenses) {
+    public LicenseFragmentBase addCustomLicense(ArrayList<License> licenses) {
         mLicenses = licenses;
 
         return this;
