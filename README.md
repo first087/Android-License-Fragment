@@ -1,4 +1,5 @@
 [ ![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg) ](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
+[![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
 
 # License Fragment 
 **License Fragment Library for Android**
