@@ -34,7 +34,7 @@ This library for easy create fragment for open-source licenses UI.
 #### Gradle
 ```groovy
 dependencies {
-    compile 'com.ethanf:license-fragment:0.9.2'
+    compile 'com.artit-k:license-fragment:0.9.3'
 }
 ```
 
@@ -92,4 +92,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-## Welcome to Fork. *I need you.*
+## Welcome to Fork.
