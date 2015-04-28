@@ -34,16 +34,23 @@ public abstract class LicenseFragmentBase extends Fragment {
         mLicenseChain = true;
     }
 
-    protected static void onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList(ARG_LICENSE_IDS, licenseIDs);
         fragment.setArguments(bundle);
+        return fragment;
     }
 
-    protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList(ARG_LICENSE_IDS, ArrayManager.asIntegerArrayList(licenseIDs));
         fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment) {
+        fragment.setArguments(new Bundle());
+        return fragment;
     }
 
     @Override

@@ -30,11 +30,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment RecyclerViewLicenseFragment.
      */
     public static RecyclerViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
-        RecyclerViewLicenseFragment fragment = new RecyclerViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+        return (RecyclerViewLicenseFragment) onNewInstance(new RecyclerViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -45,11 +41,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment RecyclerViewLicenseFragment.
      */
     public static RecyclerViewLicenseFragment newInstance(int[] licenseIDs) {
-        RecyclerViewLicenseFragment fragment = new RecyclerViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+        return (RecyclerViewLicenseFragment) onNewInstance(new RecyclerViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -59,7 +51,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment RecyclerViewLicenseFragment.
      */
     public static RecyclerViewLicenseFragment newInstance() {
-        return new RecyclerViewLicenseFragment();
+        return (RecyclerViewLicenseFragment) onNewInstance(new RecyclerViewLicenseFragment());
     }
 
     @Override

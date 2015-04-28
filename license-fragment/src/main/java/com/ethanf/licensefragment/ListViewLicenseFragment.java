@@ -30,11 +30,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
-        ListViewLicenseFragment fragment = new ListViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+        return (ListViewLicenseFragment) onNewInstance(new ListViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -45,11 +41,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance(int[] licenseIDs) {
-        ListViewLicenseFragment fragment = new ListViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+        return (ListViewLicenseFragment) onNewInstance(new ListViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -59,7 +51,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance() {
-        return new ListViewLicenseFragment();
+        return (ListViewLicenseFragment) onNewInstance(new ListViewLicenseFragment());
     }
 
     @Override

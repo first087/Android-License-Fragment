@@ -27,20 +27,9 @@ public class LicenseManager {
     }
 
     public ArrayList<License> getLicenses(ArrayList<Integer> licenseIDs) {
-        LicenseHashMap licenses = new LicenseHashMap();
-
-        licenses.add(LicenseID.LICENSE_FRAGMENT);
-
-        if (licenseIDs != null) {
-            for (int licenseID : licenseIDs) {
-                licenses.add(licenseID);
-                if (mLicenseChain) {
-                    for (int licenseChainID : getLicenseChains(licenseID)) {
-                        licenses.add(licenseChainID);
-                    }
-                }
-            }
-        }
+        LicenseHashMap licenses = new LicenseHashMap()
+                .add(LicenseID.LICENSE_FRAGMENT)
+                .add(licenseIDs);
 
         return new ArrayList<>(licenses.values());
     }
@@ -51,9 +40,8 @@ public class LicenseManager {
 
     private int[] getLicenseChains(int licenseID) {
         switch (licenseID) {
-            case LicenseID.LICENSE_FRAGMENT:    return new int[] { LicenseID.STATED_FRAGMENT };
-            case LicenseID.STATED_FRAGMENT:     return new int[] { LicenseID.OTTO };
             case LicenseID.RETROFIT:            return new int[] { LicenseID.OKHTTP };
+            case LicenseID.STATED_FRAGMENT:     return new int[] { LicenseID.OTTO };
             // TODO : Add reference license here
             default:                            return new int[] { };
         }
@@ -63,7 +51,27 @@ public class LicenseManager {
 
         public LicenseHashMap add(int licenseID) {
             put(licenseID, getLicenseById(licenseID));
+            addChain(getLicenseChains(licenseID));
             return this;
+        }
+
+        public LicenseHashMap add(ArrayList<Integer> licenseIDs) {
+            if (licenseIDs != null) {
+                for (int licenseID : licenseIDs) {
+                    add(licenseID);
+                }
+            }
+
+            return this;
+        }
+
+        private void addChain(int[] licenseIDs) {
+            if (!mLicenseChain) return;
+            if (licenseIDs == null) return;
+
+            for (int licenseID : licenseIDs) {
+                put(licenseID, getLicenseById(licenseID));
+            }
         }
 
     }

@@ -28,11 +28,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     public static ScrollViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
-        ScrollViewLicenseFragment fragment = new ScrollViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+         return (ScrollViewLicenseFragment) onNewInstance(new ScrollViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -43,11 +39,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     public static ScrollViewLicenseFragment newInstance(int[] licenseIDs) {
-        ScrollViewLicenseFragment fragment = new ScrollViewLicenseFragment();
-
-        onNewInstance(fragment, licenseIDs);
-
-        return fragment;
+        return (ScrollViewLicenseFragment) onNewInstance(new ScrollViewLicenseFragment(), licenseIDs);
     }
 
     /**
@@ -57,7 +49,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     public static ScrollViewLicenseFragment newInstance() {
-        return new ScrollViewLicenseFragment();
+        return (ScrollViewLicenseFragment) onNewInstance(new ScrollViewLicenseFragment());
     }
 
     @Override
@@ -84,12 +76,12 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-        tvLicense.setText(savedInstanceState.getCharSequence("license_text"));
+
     }
 
     @Override
     protected void onSaveState(Bundle outState) {
-        outState.putCharSequence("license_text", tvLicense.getText());
+
     }
 
 }

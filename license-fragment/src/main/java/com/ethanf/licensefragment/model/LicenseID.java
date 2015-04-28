@@ -7,9 +7,6 @@ public final class LicenseID {
     /* ----- This Library ----- */
     public static final int LICENSE_FRAGMENT    = 1;
 
-    /* ----- For This Library ----- */
-    public static final int STATED_FRAGMENT     = 101;
-
     /* ----- Google Library ----- */
     public static final int GSON                = 10001;
     // TODO : Add new constant here
@@ -20,6 +17,9 @@ public final class LicenseID {
     public static final int RETROFIT            = 20003;
     public static final int PICASSO             = 20004;
     // TODO : Add new constant here
+
+    /* ----- Nuuneoi Library ----- */
+    public static final int STATED_FRAGMENT     = 30001;
 
     /* ----- Other Library ----- */
     // TODO : Add new constant here
