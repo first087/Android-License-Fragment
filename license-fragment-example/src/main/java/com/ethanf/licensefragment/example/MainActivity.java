@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity
                 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
                 fragment = RecyclerViewLicenseFragment.newInstance()    // Call newInstance() using without parameter
                         .withLicenseChain(true)                         // Enable license chain (default)
-                        .addLicense(new int[] { LicenseID.PICASSO } )   // Add array (same call newInstance)
+                        .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
                         .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
                         .addCustomLicense(licenses);                    // Add Custom License
                 break;

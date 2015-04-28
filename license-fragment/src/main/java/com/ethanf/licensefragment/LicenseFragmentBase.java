@@ -2,11 +2,11 @@ package com.ethanf.licensefragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.ethanf.licensefragment.controller.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.utils.ArrayManager;
-import com.inthecheesefactory.thecheeselibrary.fragment.support.v4.app.StatedFragment;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * {@link OnAttachedListener} interface
  * to handle interaction events.
  */
-public abstract class LicenseFragmentBase extends StatedFragment {
+public abstract class LicenseFragmentBase extends Fragment {
 
     private static final String ARG_LICENSE_IDS = "license_ids";
 
@@ -34,16 +34,23 @@ public abstract class LicenseFragmentBase extends StatedFragment {
         mLicenseChain = true;
     }
 
-    protected static void onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList(ARG_LICENSE_IDS, licenseIDs);
         fragment.setArguments(bundle);
+        return fragment;
     }
 
-    protected static void onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, int[] licenseIDs) {
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList(ARG_LICENSE_IDS, ArrayManager.asIntegerArrayList(licenseIDs));
         fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment) {
+        fragment.setArguments(new Bundle());
+        return fragment;
     }
 
     @Override
@@ -58,9 +65,22 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     }
 
     @Override
-    protected void onFirstTimeLaunched() {
-        super.onFirstTimeLaunched();
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState == null) {
+            onFirstTimeLaunched();
+        } else {
+            onRestoreState(savedInstanceState);
+        }
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        onSaveState(outState);
+    }
+
+    protected void onFirstTimeLaunched() {
         ArrayList<Integer> licenseIDs = getArguments().getIntegerArrayList(ARG_LICENSE_IDS);
 
         LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
@@ -70,6 +90,8 @@ public abstract class LicenseFragmentBase extends StatedFragment {
     }
 
     protected abstract void onFirstTimeLaunched(ArrayList<License> licenses);
+    protected abstract void onRestoreState(Bundle savedInstanceState);
+    protected abstract void onSaveState(Bundle outState);
 
     @Override
     public void onDetach() {
