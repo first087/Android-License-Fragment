@@ -30,10 +30,6 @@ public class LicenseManager {
         LicenseHashMap licenses = new LicenseHashMap();
 
         licenses.add(LicenseID.LICENSE_FRAGMENT);
-        if (mLicenseChain) {
-            licenses.add(LicenseID.STATED_FRAGMENT);
-            licenses.add(LicenseID.OTTO);
-        }
 
         if (licenseIDs != null) {
             for (int licenseID : licenseIDs) {
