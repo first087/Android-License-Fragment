@@ -84,15 +84,11 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-        super.onRestoreState(savedInstanceState);
-
         tvLicense.setText(savedInstanceState.getCharSequence("license_text"));
     }
 
     @Override
     protected void onSaveState(Bundle outState) {
-        super.onSaveState(outState);
-
         outState.putCharSequence("license_text", tvLicense.getText());
     }
 

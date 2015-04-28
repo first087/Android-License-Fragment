@@ -91,8 +91,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-        super.onRestoreState(savedInstanceState);
-
         ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
         ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
         recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
@@ -100,8 +98,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onSaveState(Bundle outState) {
-        super.onSaveState(outState);
-
         outState.putStringArrayList("license_title", ((RecyclerViewAdapter) recyclerView.getAdapter()).getTitleList());
         outState.putStringArrayList("license_text", ((RecyclerViewAdapter) recyclerView.getAdapter()).getLicenseList());
     }

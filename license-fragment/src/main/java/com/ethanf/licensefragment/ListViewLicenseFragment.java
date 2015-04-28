@@ -88,8 +88,6 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-        super.onRestoreState(savedInstanceState);
-
         ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
         ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
         listView.setAdapter(new ListViewAdapter(titleList, licenseList));
@@ -97,8 +95,6 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onSaveState(Bundle outState) {
-        super.onSaveState(outState);
-
         outState.putStringArrayList("license_title", ((ListViewAdapter) listView.getAdapter()).getTitleList());
         outState.putStringArrayList("license_text", ((ListViewAdapter) listView.getAdapter()).getLicenseList());
     }
