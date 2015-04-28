@@ -8,7 +8,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                groupId publishedGroupId
+                groupId group
                 artifactId artifact
 
                 // Add your description here
@@ -19,8 +19,8 @@ install {
                 // Set your license
                 licenses {
                     license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name licenseName
+                        url licenseUrl
                     }
                 }
                 developers {
