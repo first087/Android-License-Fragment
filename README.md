@@ -35,7 +35,7 @@ This library for easy create fragment for open-source licenses UI.
 #### Gradle
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:0.9.4'
+    compile 'com.artit-k:license-fragment:0.9.5'
 }
 ```
 
@@ -44,7 +44,7 @@ dependencies {
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>0.9.4</version>
+        <version>0.9.5</version>
 </dependency>
 ```
 
