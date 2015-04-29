@@ -38,6 +38,15 @@ dependencies {
 }
 ```
 
+#### Maven
+```xml
+<dependency>
+        <groupId>com.artit-k</groupId>
+        <artifactId>license-fragment</artifactId>
+        <version>0.9.3</version>
+</dependency>
+```
+
 #### Code Example
 ```java
 // Example input.
