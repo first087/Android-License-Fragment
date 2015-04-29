@@ -10,7 +10,7 @@ This library for easy create fragment for open-source licenses UI.
 * **1 line** create **Fragment** for **open-source licenses** UI.
 * Support ```<fragment>```
 * Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
-* 3 Simple UI (**ScrollViewLicenseFragment**, **ListViewLicenseFragment**, **RecyclerViewLicenseFragment**)
+* 3 Simple UI (```ScrollViewLicenseFragment```, ```ListViewLicenseFragment```, ```RecyclerViewLicenseFragment```)
 * Add other licenses
 * Customize UI *(Soon)*
 
