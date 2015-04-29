@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <fragment
+        android:id="@+id/fragment"
+        android:name="com.ethanf.licensefragment.ListViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:layout="@layout/layout_item_license" />-->
+
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <FrameLayout

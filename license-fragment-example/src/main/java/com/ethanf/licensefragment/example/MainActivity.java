@@ -49,10 +49,21 @@ public class MainActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        ListViewLicenseFragment listViewLicenseFragment = (ListViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
+//
+//        listViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
+//        listViewLicenseFragment.withLicenseChain(false);
+//
+//        ArrayList<License> licenses = new ArrayList<>();
+//        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "year", "owner"));
+//        listViewLicenseFragment.addCustomLicense(licenses);
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+//        if (true) return;
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
 
