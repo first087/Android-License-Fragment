@@ -27,11 +27,13 @@ public abstract class LicenseFragmentBase extends Fragment {
 
     protected boolean mLicenseChain;
 
-    private ArrayList<License> mLicenses;
+    private ArrayList<Integer> mLicenses;
+    private ArrayList<License> mCustomLicenses;
 
     protected LicenseFragmentBase() {
         super();
         mLicenseChain = true;
+        mLicenses = new ArrayList<>();
     }
 
     protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
@@ -81,11 +83,13 @@ public abstract class LicenseFragmentBase extends Fragment {
     }
 
     protected void onFirstTimeLaunched() {
-        ArrayList<Integer> licenseIDs = getArguments().getIntegerArrayList(ARG_LICENSE_IDS);
+        boolean haveArgument = (getArguments() != null && getArguments().getIntegerArrayList(ARG_LICENSE_IDS) != null);
+
+        mLicenses.addAll(haveArgument ? getArguments().getIntegerArrayList(ARG_LICENSE_IDS) : new ArrayList<Integer>());
 
         LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
-        ArrayList<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(licenseIDs);
-        if (mLicenses != null) licenses.addAll(mLicenses);
+        ArrayList<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(mLicenses);
+        if (mCustomLicenses != null) licenses.addAll(mCustomLicenses);
         onFirstTimeLaunched(licenses);
     }
 
@@ -105,30 +109,17 @@ public abstract class LicenseFragmentBase extends Fragment {
     }
 
     public LicenseFragmentBase addLicense(ArrayList<Integer> licenseIDs) {
-        Bundle bundle = getArguments();
-        ArrayList<Integer> argLicenseIDs = bundle.getIntegerArrayList(ARG_LICENSE_IDS);
-        if (argLicenseIDs == null) argLicenseIDs = new ArrayList<>();
-        argLicenseIDs.addAll(licenseIDs);
-        bundle.putIntegerArrayList(ARG_LICENSE_IDS, argLicenseIDs);
-        setArguments(bundle);
-
+        mLicenses.addAll(licenseIDs);
         return this;
     }
 
     public LicenseFragmentBase addLicense(int[] licenseIDs) {
-        Bundle bundle = getArguments();
-        ArrayList<Integer> argLicenseIDs = bundle.getIntegerArrayList(ARG_LICENSE_IDS);
-        if (argLicenseIDs == null) argLicenseIDs = new ArrayList<>();
-        argLicenseIDs.addAll(ArrayManager.asIntegerArrayList(licenseIDs));
-        bundle.putIntegerArrayList(ARG_LICENSE_IDS, argLicenseIDs);
-        setArguments(bundle);
-
+        mLicenses.addAll(ArrayManager.asIntegerArrayList(licenseIDs));
         return this;
     }
 
-    public LicenseFragmentBase addCustomLicense(ArrayList<License> licenses) {
-        mLicenses = licenses;
-
+    public LicenseFragmentBase addCustomLicense(ArrayList<License> customLicenses) {
+        mCustomLicenses = customLicenses;
         return this;
     }
 
