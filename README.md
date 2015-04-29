@@ -8,6 +8,7 @@ This library for easy create fragment for open-source licenses UI.
 
 #### License Fragment Goals
 * **1 line** create **Fragment** for **open-source licenses** UI.
+* Support ```<fragment>```
 * Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
 * 3 Simple UI (**ScrollViewLicenseFragment**, **ListViewLicenseFragment**, **RecyclerViewLicenseFragment**)
 * Add other licenses
@@ -34,7 +35,7 @@ This library for easy create fragment for open-source licenses UI.
 #### Gradle
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:0.9.3'
+    compile 'com.artit-k:license-fragment:0.9.4'
 }
 ```
 
@@ -43,7 +44,7 @@ dependencies {
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>0.9.3</version>
+        <version>0.9.4</version>
 </dependency>
 ```
 
