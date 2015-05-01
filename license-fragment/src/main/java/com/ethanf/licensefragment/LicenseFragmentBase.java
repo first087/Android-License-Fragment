@@ -1,6 +1,7 @@
 package com.ethanf.licensefragment;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,9 @@ public abstract class LicenseFragmentBase extends Fragment {
     private static final String TAG = "LicenseFragment";
 
     private static final String ARG_LICENSE_IDS = "license_ids";
+
+    protected boolean useFromFragmentTag;
+    protected int viewBackgroundColor, viewTextColor;
 
     public interface OnAttachedListener {
         void onAttached();
@@ -69,12 +73,23 @@ public abstract class LicenseFragmentBase extends Fragment {
     public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
         super.onInflate(activity, attrs, savedInstanceState);
 
+        useFromFragmentTag = true;
+
         if (DEBUG) {
             Log.d(TAG, "onInflate(Activity, AttributeSet, Bundle)");
             Log.d(TAG, ">>>> Activity        = " + activity.getClass().getSimpleName());
             Log.d(TAG, ">>>> AttributeSet    = " + attrs);
             Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
         }
+
+        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.LicenseFragmentBase);
+
+        viewBackgroundColor = typedArray.getColor(R.styleable.LicenseFragmentBase_lfBackground,
+                activity.getResources().getColor(R.color.license_fragment_background));
+        viewTextColor = typedArray.getColor(R.styleable.LicenseFragmentBase_lfTextColor,
+                activity.getResources().getColor(R.color.license_fragment_text_color));
+
+        typedArray.recycle();
     }
 
     @Override
@@ -84,6 +99,7 @@ public abstract class LicenseFragmentBase extends Fragment {
         if (DEBUG) {
             Log.d(TAG, "onAttach(Activity)");
             Log.d(TAG, ">>>> Activity = " + activity.getClass().getSimpleName());
+            Log.d(TAG, "useFromFragmentTag = " + useFromFragmentTag);
         }
 
         try {
@@ -91,6 +107,11 @@ public abstract class LicenseFragmentBase extends Fragment {
             mOnAttachedListener.onAttached();
         } catch (ClassCastException e) {
             if (isLog) e.printStackTrace();
+        }
+
+        if (!useFromFragmentTag) {
+            viewBackgroundColor = activity.getResources().getColor(R.color.license_fragment_background);
+            viewTextColor = activity.getResources().getColor(R.color.license_fragment_text_color);
         }
     }
 

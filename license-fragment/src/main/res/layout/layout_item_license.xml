@@ -12,7 +12,8 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/license_fragment_library"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/license_fragment_text_color" />
 
     <TextView
         android:id="@+id/tvItemLicense"
@@ -22,7 +23,8 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@android:color/darker_gray"
+        android:background="@color/license_fragment_background_item"
+        android:textColor="@color/license_fragment_text_color_item"
         android:padding="@dimen/activity_vertical_margin"
         android:text="@string/license_fragment_library" />
 

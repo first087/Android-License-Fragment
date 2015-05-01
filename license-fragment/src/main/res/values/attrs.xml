@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LicenseFragmentBase">
+        <attr name="lfBackground" format="color|reference" />
+        <attr name="lfTextColor" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ScrollViewLicenseFragment">
+        <!-- Nothing -->
+    </declare-styleable>
+
+    <declare-styleable name="ListViewLicenseFragment">
+        <attr name="lfBackgroundListViewItem" format="color|reference" />
+        <attr name="lfTextColorListViewItem" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RecyclerViewLicenseFragment">
+        <attr name="lfBackgroundRecyclerViewItem" format="color|reference" />
+        <attr name="lfTextColorRecyclerViewItem" format="color|reference" />
+    </declare-styleable>
+
+</resources>

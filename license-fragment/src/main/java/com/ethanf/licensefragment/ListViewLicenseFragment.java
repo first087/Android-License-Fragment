@@ -1,7 +1,10 @@
 package com.ethanf.licensefragment;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +28,8 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
     private static final String TAG = "LicenseFragment (LV)";
 
     private ListView listView;
+
+    private int viewBackgroundItemColor, viewTextItemColor;
 
     /**
      * Use this factory method to create a new instance of
@@ -59,6 +64,37 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
+    public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
+        super.onInflate(activity, attrs, savedInstanceState);
+
+        if (DEBUG) {
+            Log.d(TAG, "onInflate(Activity, AttributeSet, Bundle)");
+            Log.d(TAG, ">>>> Activity        = " + activity.getClass().getSimpleName());
+            Log.d(TAG, ">>>> AttributeSet    = " + attrs);
+            Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
+        }
+
+        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.ListViewLicenseFragment);
+
+        viewBackgroundItemColor = typedArray.getColor(R.styleable.ListViewLicenseFragment_lfBackgroundListViewItem,
+                activity.getResources().getColor(R.color.license_fragment_background_item));
+        viewTextItemColor = typedArray.getColor(R.styleable.ListViewLicenseFragment_lfTextColorListViewItem,
+                activity.getResources().getColor(R.color.license_fragment_text_color_item));
+
+        typedArray.recycle();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        if (!useFromFragmentTag) {
+            viewBackgroundItemColor = activity.getResources().getColor(R.color.license_fragment_background_item);
+            viewTextItemColor = activity.getResources().getColor(R.color.license_fragment_text_color_item);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (DEBUG) {
@@ -85,11 +121,15 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
             licenseList.add(license.getLicense());
         }
 
+        listView.setBackgroundColor(viewBackgroundColor);
+
         listView.setAdapter(new ListViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
+        listView.setBackgroundColor(viewBackgroundColor);
+
         ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
         ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
         listView.setAdapter(new ListViewAdapter(titleList, licenseList));
@@ -158,6 +198,10 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
             public ViewHolder(View view) {
                 tvItemTitle   = (TextView) view.findViewById(R.id.tvItemTitle);
                 tvItemLicense = (TextView) view.findViewById(R.id.tvItemLicense);
+
+                tvItemTitle.setTextColor(viewTextColor);
+                tvItemLicense.setBackgroundColor(viewBackgroundItemColor);
+                tvItemLicense.setTextColor(viewTextItemColor);
             }
 
         }

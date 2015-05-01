@@ -3,4 +3,5 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/license_fragment_background"
     tools:context="com.ethanf.licensefragment.RecyclerViewLicenseFragment" />
