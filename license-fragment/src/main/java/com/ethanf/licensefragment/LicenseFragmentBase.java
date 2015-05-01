@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.ethanf.licensefragment.model.LicenseID;
 import com.ethanf.licensefragment.model.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.utils.ArrayManager;
@@ -14,7 +15,7 @@ import com.ethanf.licensefragment.utils.ArrayManager;
 import java.util.ArrayList;
 
 /**
- * Activities that contain this fragment must implement the
+ * Activities that contain this fragment can implement the
  * {@link OnAttachedListener} interface
  * to handle interaction events.
  */
@@ -153,6 +154,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         mOnAttachedListener = null;
     }
 
+    /**
+     * @param enableLog On/Off print log.
+     * @return This instance.
+     */
     public LicenseFragmentBase setLog(boolean enableLog) {
         Log.i(TAG, "Log - Turn " + (enableLog ? "on" : "off") + "!");
 
@@ -161,6 +166,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         return this;
     }
 
+    /**
+     * @param enableLicenseChain On/Off License chain. Default is true.
+     * @return This instance.
+     */
     public LicenseFragmentBase withLicenseChain(boolean enableLicenseChain) {
         if (isLog) Log.i(TAG, "License Chain - " + (enableLicenseChain ? "enable" : "disable"));
 
@@ -168,6 +177,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         return this;
     }
 
+    /**
+     * @param licenseIDs ArrayList<Integer> for License ID. Use constant from {@link LicenseID} class.
+     * @return This instance.
+     */
     public LicenseFragmentBase addLicense(ArrayList<Integer> licenseIDs) {
         if (isLog) Log.i(TAG, "Add License - count = " + licenseIDs.size());
 
@@ -175,6 +188,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         return this;
     }
 
+    /**
+     * @param licenseIDs Array for License ID. Use constant from {@link LicenseID} class.
+     * @return This instance.
+     */
     public LicenseFragmentBase addLicense(int[] licenseIDs) {
         if (isLog) Log.i(TAG, "Add License - count = " + licenseIDs.length);
 
@@ -182,6 +199,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         return this;
     }
 
+    /**
+     * @param customLicenses ArrayList<License> for {@link License} class.
+     * @return This instance.
+     */
     public LicenseFragmentBase addCustomLicense(ArrayList<License> customLicenses) {
         if (isLog) Log.i(TAG, "Add Custom License - count = " + customLicenses.size());
 

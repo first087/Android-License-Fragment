@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
+import com.ethanf.licensefragment.model.LicenseID;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs ArrayList<Integer> for License ID
+     * @param licenseIDs ArrayList<Integer> for License ID. Use constant from {@link LicenseID} class.
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     public static ScrollViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
@@ -38,7 +39,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs Array for License ID
+     * @param licenseIDs Array for License ID. Use constant from {@link LicenseID} class.
      * @return A new instance of fragment ScrollViewLicenseFragment.
      */
     public static ScrollViewLicenseFragment newInstance(int[] licenseIDs) {

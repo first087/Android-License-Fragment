@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ethanf.licensefragment.utils.ResourceManager;
 
 /**
- * Created by Artit on 20/4/2558.
+ * License data class.
  */
 public class License {
 
@@ -35,6 +35,15 @@ public class License {
         }
     }
 
+    /**
+     * Use this constructor for create instance.
+     *
+     * @param context {@link Context} class.
+     * @param title Open-source library name.
+     * @param licenseType Type of License. Use constant from {@link LicenseType} enum.
+     * @param year Year.
+     * @param owner Owner name.
+     */
     public License(Context context, String title, LicenseType licenseType, String year, String owner) {
         this.context     = context;
         this.title       = title;
@@ -43,10 +52,16 @@ public class License {
         this.owner       = owner;
     }
 
+    /**
+     * @return Open-source library name.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @return Wording for display Open-source license.
+     */
     public String getLicense() {
         return String.format(new ResourceManager(context).readRawFile(licenseType), year, owner);
     }
