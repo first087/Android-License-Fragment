@@ -40,6 +40,7 @@ bintray {
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = licenseLabel
+        dryRun = false
         publish = true
         publicDownloadNumbers = true
         version {
