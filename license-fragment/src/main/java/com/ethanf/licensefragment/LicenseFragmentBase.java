@@ -89,7 +89,7 @@ public abstract class LicenseFragmentBase extends Fragment {
             mOnAttachedListener = (OnAttachedListener) activity;
             mOnAttachedListener.onAttached();
         } catch (ClassCastException e) {
-            e.printStackTrace();
+            if (isLog) e.printStackTrace();
         }
     }
 
