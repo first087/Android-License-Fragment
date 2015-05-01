@@ -1,7 +1,7 @@
 package com.ethanf.licensefragment.model;
 
 /**
- * Created by Artit on 20/4/2558.
+ * Constant for License ID.
  */
 public final class LicenseID {
     /* ----- This Library ----- */

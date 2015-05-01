@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
+import com.ethanf.licensefragment.model.LicenseID;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs ArrayList<Integer> for License ID
+     * @param licenseIDs ArrayList<Integer> for License ID. Use constant from {@link LicenseID} class.
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance(ArrayList<Integer> licenseIDs) {
@@ -40,7 +41,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param licenseIDs Array for License ID
+     * @param licenseIDs Array for License ID. Use constant from {@link LicenseID} class.
      * @return A new instance of fragment ListViewLicenseFragment.
      */
     public static ListViewLicenseFragment newInstance(int[] licenseIDs) {

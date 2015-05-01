@@ -1,9 +1,10 @@
 package com.ethanf.licensefragment.model;
 
 /**
- * Created by Artit on 23/4/2558.
+ * Enum for license type.
+ *
+ * Reference - <a href="http://opensource.org/licenses">http://opensource.org/licenses</a>.
  */
-// Ref. http://opensource.org/licenses
 public enum LicenseType {
     APACHE_LICENSE_20,
     BSD_3_CLAUSE,
