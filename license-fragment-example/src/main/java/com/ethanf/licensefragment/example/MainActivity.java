@@ -53,11 +53,12 @@ public class MainActivity extends AppCompatActivity
 //        FragmentManager fragmentManager = getSupportFragmentManager();
 //        ListViewLicenseFragment listViewLicenseFragment = (ListViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
 //
+//        listViewLicenseFragment.setLog(true);
 //        listViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
 //        listViewLicenseFragment.withLicenseChain(false);
 //
 //        ArrayList<License> licenses = new ArrayList<>();
-//        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "year", "owner"));
+//        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
 //        listViewLicenseFragment.addCustomLicense(licenses);
     }
 
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity
                 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
                 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
                 fragment = RecyclerViewLicenseFragment.newInstance()    // Call newInstance() using without parameter
+                        .setLog(true)                                   // Enable Log
                         .withLicenseChain(true)                         // Enable license chain (default)
                         .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
                         .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity
             default:
                 return;
         }
+
+//        ((LicenseFragmentBase) fragment).setLog(true);
 
         // update the main content by replacing fragments
         fragmentManager.beginTransaction()

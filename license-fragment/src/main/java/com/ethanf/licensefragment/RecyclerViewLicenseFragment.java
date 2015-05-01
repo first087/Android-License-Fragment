@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
+
+    private static final String TAG = "LicenseFragment (RV)";
 
     private RecyclerView recyclerView;
 
@@ -57,6 +60,12 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (DEBUG) {
+            Log.d(TAG, "onCreateView(LayoutInflater, ViewGroup, Bundle)");
+            Log.d(TAG, ">>>> ViewGroup = " + container.getClass().getSimpleName());
+            Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
+        }
+
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
