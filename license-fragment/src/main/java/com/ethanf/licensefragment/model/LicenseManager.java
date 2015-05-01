@@ -1,9 +1,6 @@
-package com.ethanf.licensefragment.controller;
+package com.ethanf.licensefragment.model;
 
 import android.content.Context;
-
-import com.ethanf.licensefragment.model.License;
-import com.ethanf.licensefragment.model.LicenseID;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

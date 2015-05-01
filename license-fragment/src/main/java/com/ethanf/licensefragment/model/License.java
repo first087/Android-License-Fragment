@@ -15,7 +15,7 @@ public class License {
     private String year;
     private String owner;
 
-    public License(Context context, int licenseId) {
+    protected License(Context context, int licenseId) {
         this.context = context;
 
         switch (licenseId) {

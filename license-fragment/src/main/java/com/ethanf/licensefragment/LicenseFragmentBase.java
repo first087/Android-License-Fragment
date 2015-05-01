@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.ethanf.licensefragment.controller.LicenseManager;
+import com.ethanf.licensefragment.model.LicenseManager;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.utils.ArrayManager;
 
