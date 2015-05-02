@@ -52,7 +52,12 @@ public class MainActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-//        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+//        ScrollViewLicenseFragment scrollViewLicenseFragment = (ScrollViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
+//        scrollViewLicenseFragment.setLog(true);
+//        scrollViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
+
 //        ListViewLicenseFragment listViewLicenseFragment = (ListViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
 //
 //        listViewLicenseFragment.setLog(true);
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 1:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewLicenseFragment) return;
-                fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }) // Call newInstance() using parameter array
+                fragment = ListViewLicenseFragment.newInstance(new int[]{LicenseID.PICASSO}) // Call newInstance() using parameter array
                         .withLicenseChain(false);                                               // Disable license chain
                 break;
             case 2:

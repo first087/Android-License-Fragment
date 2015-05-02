@@ -107,6 +107,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_list_view_license, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.listView);
+        listView.setBackgroundColor(viewBackgroundColor);
 
         return rootView;
     }
@@ -121,15 +122,11 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
             licenseList.add(license.getLicense());
         }
 
-        listView.setBackgroundColor(viewBackgroundColor);
-
         listView.setAdapter(new ListViewAdapter(titleList, licenseList));
     }
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-        listView.setBackgroundColor(viewBackgroundColor);
-
         ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
         ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
         listView.setAdapter(new ListViewAdapter(titleList, licenseList));

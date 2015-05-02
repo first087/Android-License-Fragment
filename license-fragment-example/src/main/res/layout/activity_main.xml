@@ -9,6 +9,14 @@
 
 <!--    <fragment
         android:id="@+id/fragment"
+        android:name="com.ethanf.licensefragment.ScrollViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        custom:lfBackground="@android:color/holo_green_light"
+        custom:lfTextColor="@android:color/holo_purple" />-->
+
+<!--    <fragment
+        android:id="@+id/fragment"
         android:name="com.ethanf.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
