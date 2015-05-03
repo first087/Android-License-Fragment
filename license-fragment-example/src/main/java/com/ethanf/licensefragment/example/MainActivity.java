@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,6 +16,7 @@ import com.ethanf.licensefragment.LicenseFragmentBase;
 import com.ethanf.licensefragment.ListViewLicenseFragment;
 import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
+import com.ethanf.licensefragment.model.CustomUI;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.model.LicenseID;
 import com.ethanf.licensefragment.model.LicenseType;
@@ -109,7 +109,12 @@ public class MainActivity extends AppCompatActivity
                         .withLicenseChain(true)                         // Enable license chain (default)
                         .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
                         .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
-                        .addCustomLicense(licenses);                    // Add Custom License
+                        .addCustomLicense(licenses)                     // Add Custom License
+                        .setCustomUI(new CustomUI()                     // Set Custom UI
+                                .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
+                                .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
+                                .setLicenseTextColor(Color.DKGRAY));
                 break;
             default:
                 return;

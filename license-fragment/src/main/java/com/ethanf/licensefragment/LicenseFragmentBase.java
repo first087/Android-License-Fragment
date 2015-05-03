@@ -29,7 +29,7 @@ public abstract class LicenseFragmentBase extends Fragment {
     private static final String ARG_LICENSE_IDS = "license_ids";
 
     protected boolean useFromFragmentTag;
-    protected CustomUI customUI;
+    protected CustomUI customUI, mCustomUI;
 
     public interface OnAttachedListener {
         void onAttached();
@@ -110,13 +110,6 @@ public abstract class LicenseFragmentBase extends Fragment {
             Log.d(TAG, "useFromFragmentTag = " + useFromFragmentTag);
         }
 
-        try {
-            mOnAttachedListener = (OnAttachedListener) activity;
-            mOnAttachedListener.onAttached();
-        } catch (ClassCastException e) {
-            if (isLog) e.printStackTrace();
-        }
-
         if (!useFromFragmentTag) {
             Resources resources = activity.getResources();
 
@@ -124,6 +117,20 @@ public abstract class LicenseFragmentBase extends Fragment {
             customUI.setTitleTextColor(resources.getColor(R.color.license_fragment_text_color));
             customUI.setLicenseBackgroundColor(resources.getColor(R.color.license_fragment_background_item));
             customUI.setLicenseTextColor(resources.getColor(R.color.license_fragment_text_color_item));
+        }
+
+        if (mCustomUI != null) {
+            if (mCustomUI.getTitleBackgroundColor() != 0)   customUI.setTitleBackgroundColor(mCustomUI.getTitleBackgroundColor());
+            if (mCustomUI.getTitleTextColor() != 0)         customUI.setTitleTextColor(mCustomUI.getTitleTextColor());
+            if (mCustomUI.getLicenseBackgroundColor() != 0) customUI.setLicenseBackgroundColor(mCustomUI.getLicenseBackgroundColor());
+            if (mCustomUI.getLicenseTextColor() != 0)       customUI.setLicenseTextColor(mCustomUI.getLicenseTextColor());
+        }
+
+        try {
+            mOnAttachedListener = (OnAttachedListener) activity;
+            mOnAttachedListener.onAttached();
+        } catch (ClassCastException e) {
+            if (isLog) e.printStackTrace();
         }
     }
 
@@ -240,6 +247,17 @@ public abstract class LicenseFragmentBase extends Fragment {
         if (isLog) Log.i(TAG, "Add Custom License - count = " + customLicenses.size());
 
         mCustomLicenses = customLicenses;
+        return this;
+    }
+
+    /**
+     * @param customUI {@link CustomUI} class.
+     * @return This instance.
+     */
+    public LicenseFragmentBase setCustomUI(CustomUI customUI) {
+        if (isLog) Log.i(TAG, "Set Custom UI");
+
+        mCustomUI = customUI;
         return this;
     }
 
