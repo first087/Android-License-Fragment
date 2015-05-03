@@ -1,6 +1,7 @@
 package com.ethanf.licensefragment;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.ethanf.licensefragment.model.CustomUI;
 import com.ethanf.licensefragment.model.LicenseID;
 import com.ethanf.licensefragment.model.LicenseManager;
 import com.ethanf.licensefragment.model.License;
@@ -27,7 +29,7 @@ public abstract class LicenseFragmentBase extends Fragment {
     private static final String ARG_LICENSE_IDS = "license_ids";
 
     protected boolean useFromFragmentTag;
-    protected int viewBackgroundColor, viewTextColor;
+    protected CustomUI customUI;
 
     public interface OnAttachedListener {
         void onAttached();
@@ -48,6 +50,7 @@ public abstract class LicenseFragmentBase extends Fragment {
         super();
         mLicenseChain = true;
         mLicenses = new ArrayList<>();
+        customUI = new CustomUI();
     }
 
     protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
@@ -82,12 +85,17 @@ public abstract class LicenseFragmentBase extends Fragment {
             Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
         }
 
-        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.LicenseFragmentBase);
+        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.LicenseFragment);
+        Resources resources = activity.getResources();
 
-        viewBackgroundColor = typedArray.getColor(R.styleable.LicenseFragmentBase_lfBackground,
-                activity.getResources().getColor(R.color.license_fragment_background));
-        viewTextColor = typedArray.getColor(R.styleable.LicenseFragmentBase_lfTextColor,
-                activity.getResources().getColor(R.color.license_fragment_text_color));
+        customUI.setTitleBackgroundColor(typedArray.getColor(R.styleable.LicenseFragment_lfTitleBackgroundColor,
+                resources.getColor(R.color.license_fragment_background)));
+        customUI.setTitleTextColor(typedArray.getColor(R.styleable.LicenseFragment_lfTitleTextColor,
+                resources.getColor(R.color.license_fragment_text_color)));
+        customUI.setLicenseBackgroundColor(typedArray.getColor(R.styleable.LicenseFragment_lfLicenseBackgroundColor,
+                resources.getColor(R.color.license_fragment_background_item)));
+        customUI.setLicenseTextColor(typedArray.getColor(R.styleable.LicenseFragment_lfLicenseTextColor,
+                resources.getColor(R.color.license_fragment_text_color_item)));
 
         typedArray.recycle();
     }
@@ -110,8 +118,12 @@ public abstract class LicenseFragmentBase extends Fragment {
         }
 
         if (!useFromFragmentTag) {
-            viewBackgroundColor = activity.getResources().getColor(R.color.license_fragment_background);
-            viewTextColor = activity.getResources().getColor(R.color.license_fragment_text_color);
+            Resources resources = activity.getResources();
+
+            customUI.setTitleBackgroundColor(resources.getColor(R.color.license_fragment_background));
+            customUI.setTitleTextColor(resources.getColor(R.color.license_fragment_text_color));
+            customUI.setLicenseBackgroundColor(resources.getColor(R.color.license_fragment_background_item));
+            customUI.setLicenseTextColor(resources.getColor(R.color.license_fragment_text_color_item));
         }
     }
 

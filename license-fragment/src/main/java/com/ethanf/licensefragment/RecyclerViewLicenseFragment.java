@@ -1,12 +1,9 @@
 package com.ethanf.licensefragment;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +25,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     private static final String TAG = "LicenseFragment (RV)";
 
     private RecyclerView recyclerView;
-
-    private int viewBackgroundItemColor, viewTextItemColor;
 
     /**
      * Use this factory method to create a new instance of
@@ -64,42 +59,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     }
 
     @Override
-    public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
-        super.onInflate(activity, attrs, savedInstanceState);
-
-        if (DEBUG) {
-            Log.d(TAG, "onInflate(Activity, AttributeSet, Bundle)");
-            Log.d(TAG, ">>>> Activity        = " + activity.getClass().getSimpleName());
-            Log.d(TAG, ">>>> AttributeSet    = " + attrs);
-            Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
-        }
-
-        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.RecyclerViewLicenseFragment);
-
-        viewBackgroundItemColor = typedArray.getColor(R.styleable.RecyclerViewLicenseFragment_lfBackgroundRecyclerViewItem,
-                activity.getResources().getColor(R.color.license_fragment_background_item));
-        viewTextItemColor = typedArray.getColor(R.styleable.RecyclerViewLicenseFragment_lfTextColorRecyclerViewItem,
-                activity.getResources().getColor(R.color.license_fragment_text_color_item));
-
-        typedArray.recycle();
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        if (DEBUG) {
-            Log.d(TAG, "onAttach(Activity)");
-            Log.d(TAG, ">>>> Activity = " + activity.getClass().getSimpleName());
-        }
-
-        if (!useFromFragmentTag) {
-            viewBackgroundItemColor = activity.getResources().getColor(R.color.license_fragment_background_item);
-            viewTextItemColor = activity.getResources().getColor(R.color.license_fragment_text_color_item);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (DEBUG) {
@@ -112,7 +71,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        recyclerView.setBackgroundColor(viewBackgroundColor);
+        recyclerView.setBackgroundColor(customUI.getTitleBackgroundColor());
 //        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){ });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -190,9 +149,9 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
                 tvItemTitle   = (TextView) itemView.findViewById(R.id.tvItemTitle);
                 tvItemLicense = (TextView) itemView.findViewById(R.id.tvItemLicense);
 
-                tvItemTitle.setTextColor(viewTextColor);
-                tvItemLicense.setBackgroundColor(viewBackgroundItemColor);
-                tvItemLicense.setTextColor(viewTextItemColor);
+                tvItemTitle.setTextColor(customUI.getTitleTextColor());
+                tvItemLicense.setBackgroundColor(customUI.getLicenseBackgroundColor());
+                tvItemLicense.setTextColor(customUI.getLicenseTextColor());
             }
 
         }
