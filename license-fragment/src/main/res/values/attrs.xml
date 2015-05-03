@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LicenseFragment">
+        <attr name="lfTitleBackgroundColor" format="color|reference" />
+        <attr name="lfTitleTextColor" format="color|reference" />
+        <attr name="lfLicenseBackgroundColor" format="color|reference" />
+        <attr name="lfLicenseTextColor" format="color|reference" />
+    </declare-styleable>
+
+</resources>

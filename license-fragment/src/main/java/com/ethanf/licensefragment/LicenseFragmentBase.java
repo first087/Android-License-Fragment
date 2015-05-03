@@ -1,12 +1,15 @@
 package com.ethanf.licensefragment;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.ethanf.licensefragment.model.CustomUI;
 import com.ethanf.licensefragment.model.LicenseID;
 import com.ethanf.licensefragment.model.LicenseManager;
 import com.ethanf.licensefragment.model.License;
@@ -24,6 +27,9 @@ public abstract class LicenseFragmentBase extends Fragment {
     private static final String TAG = "LicenseFragment";
 
     private static final String ARG_LICENSE_IDS = "license_ids";
+
+    protected boolean useFromFragmentTag;
+    protected CustomUI customUI, mCustomUI;
 
     public interface OnAttachedListener {
         void onAttached();
@@ -44,6 +50,7 @@ public abstract class LicenseFragmentBase extends Fragment {
         super();
         mLicenseChain = true;
         mLicenses = new ArrayList<>();
+        customUI = new CustomUI();
     }
 
     protected static LicenseFragmentBase onNewInstance(LicenseFragmentBase fragment, ArrayList<Integer> licenseIDs) {
@@ -69,12 +76,28 @@ public abstract class LicenseFragmentBase extends Fragment {
     public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
         super.onInflate(activity, attrs, savedInstanceState);
 
+        useFromFragmentTag = true;
+
         if (DEBUG) {
             Log.d(TAG, "onInflate(Activity, AttributeSet, Bundle)");
             Log.d(TAG, ">>>> Activity        = " + activity.getClass().getSimpleName());
             Log.d(TAG, ">>>> AttributeSet    = " + attrs);
             Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
         }
+
+        TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.LicenseFragment);
+        Resources resources = activity.getResources();
+
+        customUI.setTitleBackgroundColor(typedArray.getColor(R.styleable.LicenseFragment_lfTitleBackgroundColor,
+                resources.getColor(R.color.license_fragment_background)));
+        customUI.setTitleTextColor(typedArray.getColor(R.styleable.LicenseFragment_lfTitleTextColor,
+                resources.getColor(R.color.license_fragment_text_color)));
+        customUI.setLicenseBackgroundColor(typedArray.getColor(R.styleable.LicenseFragment_lfLicenseBackgroundColor,
+                resources.getColor(R.color.license_fragment_background_item)));
+        customUI.setLicenseTextColor(typedArray.getColor(R.styleable.LicenseFragment_lfLicenseTextColor,
+                resources.getColor(R.color.license_fragment_text_color_item)));
+
+        typedArray.recycle();
     }
 
     @Override
@@ -84,6 +107,23 @@ public abstract class LicenseFragmentBase extends Fragment {
         if (DEBUG) {
             Log.d(TAG, "onAttach(Activity)");
             Log.d(TAG, ">>>> Activity = " + activity.getClass().getSimpleName());
+            Log.d(TAG, "useFromFragmentTag = " + useFromFragmentTag);
+        }
+
+        if (!useFromFragmentTag) {
+            Resources resources = activity.getResources();
+
+            customUI.setTitleBackgroundColor(resources.getColor(R.color.license_fragment_background));
+            customUI.setTitleTextColor(resources.getColor(R.color.license_fragment_text_color));
+            customUI.setLicenseBackgroundColor(resources.getColor(R.color.license_fragment_background_item));
+            customUI.setLicenseTextColor(resources.getColor(R.color.license_fragment_text_color_item));
+        }
+
+        if (mCustomUI != null) {
+            if (mCustomUI.getTitleBackgroundColor() != 0)   customUI.setTitleBackgroundColor(mCustomUI.getTitleBackgroundColor());
+            if (mCustomUI.getTitleTextColor() != 0)         customUI.setTitleTextColor(mCustomUI.getTitleTextColor());
+            if (mCustomUI.getLicenseBackgroundColor() != 0) customUI.setLicenseBackgroundColor(mCustomUI.getLicenseBackgroundColor());
+            if (mCustomUI.getLicenseTextColor() != 0)       customUI.setLicenseTextColor(mCustomUI.getLicenseTextColor());
         }
 
         try {
@@ -207,6 +247,17 @@ public abstract class LicenseFragmentBase extends Fragment {
         if (isLog) Log.i(TAG, "Add Custom License - count = " + customLicenses.size());
 
         mCustomLicenses = customLicenses;
+        return this;
+    }
+
+    /**
+     * @param customUI {@link CustomUI} class.
+     * @return This instance.
+     */
+    public LicenseFragmentBase setCustomUI(CustomUI customUI) {
+        if (isLog) Log.i(TAG, "Set Custom UI");
+
+        mCustomUI = customUI;
         return this;
     }
 

@@ -1,5 +1,6 @@
 <!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -8,9 +9,32 @@
 
 <!--    <fragment
         android:id="@+id/fragment"
+        android:name="com.ethanf.licensefragment.ScrollViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        custom:lfTitleBackgroundColor="@android:color/holo_green_light"
+        custom:lfTitleTextColor="@android:color/holo_purple" />-->
+
+<!--    <fragment
+        android:id="@+id/fragment"
         android:name="com.ethanf.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        custom:lfTitleBackgroundColor="@android:color/holo_green_light"
+        custom:lfTitleTextColor="@android:color/holo_purple"
+        custom:lfLicenseBackgroundColor="@android:color/holo_green_dark"
+        custom:lfLicenseTextColor="@android:color/holo_blue_dark"
+        tools:layout="@layout/layout_item_license" />-->
+
+<!--    <fragment
+        android:id="@+id/fragment"
+        android:name="com.ethanf.licensefragment.RecyclerViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        custom:lfTitleBackgroundColor="@android:color/holo_green_light"
+        custom:lfTitleTextColor="@android:color/holo_purple"
+        custom:lfLicenseBackgroundColor="@android:color/holo_green_dark"
+        custom:lfLicenseTextColor="@android:color/holo_blue_dark"
         tools:layout="@layout/layout_item_license" />-->
 
     <!-- As the main content view, the view below consumes the entire

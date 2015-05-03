@@ -68,7 +68,10 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_scroll_view_license, container, false);
 
+        rootView.setBackgroundColor(customUI.getTitleBackgroundColor());
+
         tvLicense = (TextView) rootView.findViewById(R.id.tvLicense);
+        tvLicense.setTextColor(customUI.getTitleTextColor());
 
         return rootView;
     }

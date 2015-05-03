@@ -63,7 +63,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
                              Bundle savedInstanceState) {
         if (DEBUG) {
             Log.d(TAG, "onCreateView(LayoutInflater, ViewGroup, Bundle)");
-            Log.d(TAG, ">>>> ViewGroup = " + container.getClass().getSimpleName());
+            Log.d(TAG, ">>>> ViewGroup = " + ((container != null) ? container.getClass().getSimpleName() : "null"));
             Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
         }
 
@@ -71,6 +71,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+        recyclerView.setBackgroundColor(customUI.getTitleBackgroundColor());
 //        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){ });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -147,8 +148,14 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
 
                 tvItemTitle   = (TextView) itemView.findViewById(R.id.tvItemTitle);
                 tvItemLicense = (TextView) itemView.findViewById(R.id.tvItemLicense);
+
+                tvItemTitle.setTextColor(customUI.getTitleTextColor());
+                tvItemLicense.setBackgroundColor(customUI.getLicenseBackgroundColor());
+                tvItemLicense.setTextColor(customUI.getLicenseTextColor());
             }
+
         }
+
     }
 
 }

@@ -1,6 +1,7 @@
 package com.ethanf.licensefragment.example;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.ethanf.licensefragment.LicenseFragmentBase;
 import com.ethanf.licensefragment.ListViewLicenseFragment;
 import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
 import com.ethanf.licensefragment.ScrollViewLicenseFragment;
+import com.ethanf.licensefragment.model.CustomUI;
 import com.ethanf.licensefragment.model.License;
 import com.ethanf.licensefragment.model.LicenseID;
 import com.ethanf.licensefragment.model.LicenseType;
@@ -50,7 +52,12 @@ public class MainActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-//        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+//        ScrollViewLicenseFragment scrollViewLicenseFragment = (ScrollViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
+//        scrollViewLicenseFragment.setLog(true);
+//        scrollViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
+
 //        ListViewLicenseFragment listViewLicenseFragment = (ListViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
 //
 //        listViewLicenseFragment.setLog(true);
@@ -60,6 +67,16 @@ public class MainActivity extends AppCompatActivity
 //        ArrayList<License> licenses = new ArrayList<>();
 //        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
 //        listViewLicenseFragment.addCustomLicense(licenses);
+
+//        RecyclerViewLicenseFragment recyclerViewLicenseFragment = (RecyclerViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
+//
+//        recyclerViewLicenseFragment.setLog(true);
+//        recyclerViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
+//        recyclerViewLicenseFragment.withLicenseChain(false);
+//
+//        ArrayList<License> licenses = new ArrayList<>();
+//        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
+//        recyclerViewLicenseFragment.addCustomLicense(licenses);
     }
 
     @Override
@@ -79,7 +96,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 1:
                 if (fragmentManager.findFragmentById(R.id.container) instanceof ListViewLicenseFragment) return;
-                fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }) // Call newInstance() using parameter array
+                fragment = ListViewLicenseFragment.newInstance(new int[]{LicenseID.PICASSO}) // Call newInstance() using parameter array
                         .withLicenseChain(false);                                               // Disable license chain
                 break;
             case 2:
@@ -92,7 +109,12 @@ public class MainActivity extends AppCompatActivity
                         .withLicenseChain(true)                         // Enable license chain (default)
                         .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
                         .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
-                        .addCustomLicense(licenses);                    // Add Custom License
+                        .addCustomLicense(licenses)                     // Add Custom License
+                        .setCustomUI(new CustomUI()                     // Set Custom UI
+                                .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
+                                .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
+                                .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
+                                .setLicenseTextColor(Color.DKGRAY));
                 break;
             default:
                 return;

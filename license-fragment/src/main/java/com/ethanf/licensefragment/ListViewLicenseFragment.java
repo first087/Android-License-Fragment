@@ -71,6 +71,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_list_view_license, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.listView);
+        listView.setBackgroundColor(customUI.getTitleBackgroundColor());
 
         return rootView;
     }
@@ -158,9 +159,14 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
             public ViewHolder(View view) {
                 tvItemTitle   = (TextView) view.findViewById(R.id.tvItemTitle);
                 tvItemLicense = (TextView) view.findViewById(R.id.tvItemLicense);
+
+                tvItemTitle.setTextColor(customUI.getTitleTextColor());
+                tvItemLicense.setBackgroundColor(customUI.getLicenseBackgroundColor());
+                tvItemLicense.setTextColor(customUI.getLicenseTextColor());
             }
 
         }
+
     }
 
 }
