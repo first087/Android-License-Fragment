@@ -88,6 +88,11 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
+        if (DEBUG) {
+            Log.d(TAG, "onAttach(Activity)");
+            Log.d(TAG, ">>>> Activity = " + activity.getClass().getSimpleName());
+        }
+
         if (!useFromFragmentTag) {
             viewBackgroundItemColor = activity.getResources().getColor(R.color.license_fragment_background_item);
             viewTextItemColor = activity.getResources().getColor(R.color.license_fragment_text_color_item);
@@ -202,6 +207,7 @@ public class ListViewLicenseFragment extends LicenseFragmentBase {
             }
 
         }
+
     }
 
 }

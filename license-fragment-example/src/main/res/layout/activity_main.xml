@@ -26,6 +26,17 @@
         custom:lfTextColorListViewItem="@android:color/holo_blue_dark"
         tools:layout="@layout/layout_item_license" />-->
 
+<!--    <fragment
+        android:id="@+id/fragment"
+        android:name="com.ethanf.licensefragment.RecyclerViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        custom:lfBackground="@android:color/holo_green_light"
+        custom:lfTextColor="@android:color/holo_purple"
+        custom:lfBackgroundRecyclerViewItem="@android:color/holo_green_dark"
+        custom:lfTextColorRecyclerViewItem="@android:color/holo_blue_dark"
+        tools:layout="@layout/layout_item_license" />-->
+
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <FrameLayout

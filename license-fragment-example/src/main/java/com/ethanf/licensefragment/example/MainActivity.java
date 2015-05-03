@@ -67,6 +67,16 @@ public class MainActivity extends AppCompatActivity
 //        ArrayList<License> licenses = new ArrayList<>();
 //        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
 //        listViewLicenseFragment.addCustomLicense(licenses);
+
+//        RecyclerViewLicenseFragment recyclerViewLicenseFragment = (RecyclerViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
+//
+//        recyclerViewLicenseFragment.setLog(true);
+//        recyclerViewLicenseFragment.addLicense(new int[]{LicenseID.PICASSO, LicenseID.STATED_FRAGMENT, LicenseID.GSON});
+//        recyclerViewLicenseFragment.withLicenseChain(false);
+//
+//        ArrayList<License> licenses = new ArrayList<>();
+//        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
+//        recyclerViewLicenseFragment.addCustomLicense(licenses);
     }
 
     @Override
