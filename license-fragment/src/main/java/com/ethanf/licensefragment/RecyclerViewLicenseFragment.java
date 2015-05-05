@@ -71,7 +71,6 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
         View rootView = inflater.inflate(R.layout.fragment_recycler_view_license, container, false);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        recyclerView.setBackgroundColor(customUI.getTitleBackgroundColor());
 //        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){ });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -89,6 +88,7 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
             licenseList.add(license.getLicense());
         }
 
+        recyclerView.setBackgroundColor(customUI.getTitleBackgroundColor());
         recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 
@@ -96,6 +96,8 @@ public class RecyclerViewLicenseFragment extends LicenseFragmentBase {
     protected void onRestoreState(Bundle savedInstanceState) {
         ArrayList<String> titleList   = savedInstanceState.getStringArrayList("license_title");
         ArrayList<String> licenseList = savedInstanceState.getStringArrayList("license_text");
+
+        recyclerView.setBackgroundColor(customUI.getTitleBackgroundColor());
         recyclerView.setAdapter(new RecyclerViewAdapter(titleList, licenseList));
     }
 

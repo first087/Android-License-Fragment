@@ -43,16 +43,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+                fragmentManager.findFragmentById(R.id.navigation_drawer);
         if (savedInstanceState == null) mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
 //        ScrollViewLicenseFragment scrollViewLicenseFragment = (ScrollViewLicenseFragment) fragmentManager.findFragmentById(R.id.fragment);
 //        scrollViewLicenseFragment.setLog(true);
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity
 //        ArrayList<License> licenses = new ArrayList<>();
 //        licenses.add(new License(this, "Title", LicenseType.BSD_3_CLAUSE, "YEAR", "OWNER"));
 //        recyclerViewLicenseFragment.addCustomLicense(licenses);
+//        recyclerViewLicenseFragment.setCustomUI(new CustomUI().setTitleBackgroundColor(Color.RED));
     }
 
     @Override
