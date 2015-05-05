@@ -119,13 +119,6 @@ public abstract class LicenseFragmentBase extends Fragment {
             customUI.setLicenseTextColor(resources.getColor(R.color.license_fragment_text_color_item));
         }
 
-        if (mCustomUI != null) {
-            if (mCustomUI.getTitleBackgroundColor() != 0)   customUI.setTitleBackgroundColor(mCustomUI.getTitleBackgroundColor());
-            if (mCustomUI.getTitleTextColor() != 0)         customUI.setTitleTextColor(mCustomUI.getTitleTextColor());
-            if (mCustomUI.getLicenseBackgroundColor() != 0) customUI.setLicenseBackgroundColor(mCustomUI.getLicenseBackgroundColor());
-            if (mCustomUI.getLicenseTextColor() != 0)       customUI.setLicenseTextColor(mCustomUI.getLicenseTextColor());
-        }
-
         try {
             mOnAttachedListener = (OnAttachedListener) activity;
             mOnAttachedListener.onAttached();
@@ -144,9 +137,24 @@ public abstract class LicenseFragmentBase extends Fragment {
         }
 
         if (savedInstanceState == null) {
+            if (mCustomUI != null) {
+                if (mCustomUI.getTitleBackgroundColor() != 0)   customUI.setTitleBackgroundColor(mCustomUI.getTitleBackgroundColor());
+                if (mCustomUI.getTitleTextColor() != 0)         customUI.setTitleTextColor(mCustomUI.getTitleTextColor());
+                if (mCustomUI.getLicenseBackgroundColor() != 0) customUI.setLicenseBackgroundColor(mCustomUI.getLicenseBackgroundColor());
+                if (mCustomUI.getLicenseTextColor() != 0)       customUI.setLicenseTextColor(mCustomUI.getLicenseTextColor());
+            }
+
             onFirstTimeLaunched();
         } else {
             isLog = savedInstanceState.getBoolean("log_enable", false);
+
+            int[] intsCustomUI = savedInstanceState.getIntArray("custom_ui");
+
+            customUI = new CustomUI();
+            customUI.setTitleBackgroundColor(intsCustomUI[0]);
+            customUI.setTitleTextColor(intsCustomUI[1]);
+            customUI.setLicenseBackgroundColor(intsCustomUI[2]);
+            customUI.setLicenseTextColor(intsCustomUI[3]);
 
             if (isLog) Log.i(TAG, "Call -> onRestoreState(Bundle)");
             onRestoreState(savedInstanceState);
@@ -163,6 +171,13 @@ public abstract class LicenseFragmentBase extends Fragment {
         }
 
         outState.putBoolean("log_enable", isLog);
+
+        outState.putIntArray("custom_ui", new int[] {
+                customUI.getTitleBackgroundColor(),
+                customUI.getTitleTextColor(),
+                customUI.getLicenseBackgroundColor(),
+                customUI.getLicenseTextColor()
+        });
 
         if (isLog) Log.i(TAG, "Call -> onSaveState(Bundle)");
         onSaveState(outState);

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.ethanf.licensefragment.model.License;
@@ -22,6 +23,7 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
 
     private static final String TAG = "LicenseFragment (SV)";
 
+    private ScrollView scrollView;
     private TextView tvLicense;
 
     /**
@@ -61,23 +63,24 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
                              Bundle savedInstanceState) {
         if (DEBUG) {
             Log.d(TAG, "onCreateView(LayoutInflater, ViewGroup, Bundle)");
-            Log.d(TAG, ">>>> ViewGroup = " + container.getClass().getSimpleName());
+            Log.d(TAG, ">>>> ViewGroup = " + ((container != null) ? container.getClass().getSimpleName() : "null"));
             Log.d(TAG, ">>>> Bundle not null = " + (savedInstanceState != null));
         }
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_scroll_view_license, container, false);
 
-        rootView.setBackgroundColor(customUI.getTitleBackgroundColor());
-
+        scrollView = (ScrollView) rootView.findViewById(R.id.scrollView);
         tvLicense = (TextView) rootView.findViewById(R.id.tvLicense);
-        tvLicense.setTextColor(customUI.getTitleTextColor());
 
         return rootView;
     }
 
     @Override
     protected void onFirstTimeLaunched(ArrayList<License> licenses) {
+        scrollView.setBackgroundColor(customUI.getTitleBackgroundColor());
+        tvLicense.setTextColor(customUI.getTitleTextColor());
+
         tvLicense.setText("");
         for (License license : licenses) {
             tvLicense.append("-------------------------\n");
@@ -89,7 +92,8 @@ public class ScrollViewLicenseFragment extends LicenseFragmentBase {
 
     @Override
     protected void onRestoreState(Bundle savedInstanceState) {
-
+        scrollView.setBackgroundColor(customUI.getTitleBackgroundColor());
+        tvLicense.setTextColor(customUI.getTitleTextColor());
     }
 
     @Override
