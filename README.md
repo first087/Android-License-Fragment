@@ -13,7 +13,7 @@ This library for easy create fragment for open-source licenses UI.
 * Auto generate license chain by default. (Ex. If you add Otto library. It will automatic add OkHttp library.)
 * 3 Simple UI (```ScrollViewLicenseFragment```, ```ListViewLicenseFragment```, ```RecyclerViewLicenseFragment```)
 * Add other licenses
-* Customize UI *(Soon)*
+* Customize UI
 
 #### Support license type (Build-in)
 * Apache License 2.0
@@ -36,7 +36,7 @@ This library for easy create fragment for open-source licenses UI.
 #### Gradle
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:0.9.5'
+    compile 'com.artit-k:license-fragment:1.0.0'
 }
 ```
 
@@ -45,18 +45,20 @@ dependencies {
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>0.9.5</version>
+        <version>1.0.0</version>
 </dependency>
 ```
 
 #### Code Example
+*Example input.*
 ```java
-// Example input.
 ArrayList<Integer> licenseIds = new ArrayList<>();
 licenseIds.add(LicenseID.GSON);
 licenseIds.add(LicenseID.RETROFIT);
+```
 
-// Example for create fragment by 1 line.
+**Example for create fragment by 1 line.**
+```java
 // Ex1 - Call newInstance() using parameter ArrayList<Integer>
 Fragment fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
 
@@ -65,8 +67,10 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 
 // Ex3 - Call newInstance() using without parameter + (Optional) Enable license chain (default)
 Fragment fragment = RecyclerViewLicenseFragment.newInstance().withLicenseChain(true);
+```
 
-// Optional : Add more License and Custom licenses.
+**Optional** - Add more License and Custom licenses.
+```java
 ArrayList<License> licenses = new ArrayList<>();
 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
@@ -74,6 +78,18 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
             .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
             .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
             .addCustomLicense(licenses);                    // Add Custom License
+```
+
+**Optional** - Custom UI.
+```java
+CustomUI customUI = new CustomUI()                          // Create Custom UI
+            .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
+            .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
+            .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
+            .setLicenseTextColor(Color.DKGRAY);
+
+Fragment fragment = RecyclerViewLicenseFragment.newInstance()
+            .setCustomUI(customUI);                         // Set Custom UI
 ```
 
 #### Screenshot Example
