@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment;
+package com.artitk.licensefragment;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -9,11 +9,11 @@ import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.ethanf.licensefragment.model.CustomUI;
-import com.ethanf.licensefragment.model.LicenseID;
-import com.ethanf.licensefragment.model.LicenseManager;
-import com.ethanf.licensefragment.model.License;
-import com.ethanf.licensefragment.utils.ArrayManager;
+import com.artitk.licensefragment.model.CustomUI;
+import com.artitk.licensefragment.model.LicenseID;
+import com.artitk.licensefragment.model.LicenseManager;
+import com.artitk.licensefragment.model.License;
+import com.artitk.licensefragment.utils.ArrayManager;
 
 import java.util.ArrayList;
 

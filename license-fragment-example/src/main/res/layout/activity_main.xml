@@ -9,7 +9,7 @@
 
 <!--    <fragment
         android:id="@+id/fragment"
-        android:name="com.ethanf.licensefragment.ScrollViewLicenseFragment"
+        android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         custom:lfTitleBackgroundColor="@android:color/holo_green_light"
@@ -17,7 +17,7 @@
 
 <!--    <fragment
         android:id="@+id/fragment"
-        android:name="com.ethanf.licensefragment.ListViewLicenseFragment"
+        android:name="com.artitk.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         custom:lfTitleBackgroundColor="@android:color/holo_green_light"
@@ -28,7 +28,7 @@
 
 <!--    <fragment
         android:id="@+id/fragment"
-        android:name="com.ethanf.licensefragment.RecyclerViewLicenseFragment"
+        android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         custom:lfTitleBackgroundColor="@android:color/holo_green_light"
@@ -53,7 +53,7 @@
          the container. -->
     <fragment
         android:id="@+id/navigation_drawer"
-        android:name="com.ethanf.licensefragment.example.NavigationDrawerFragment"
+        android:name="com.artitk.licensefragment.example.NavigationDrawerFragment"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

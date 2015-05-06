@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment.example;
+package com.artitk.licensefragment;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

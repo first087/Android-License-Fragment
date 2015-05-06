@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment.utils;
+package com.artitk.licensefragment.utils;
 
 import java.util.ArrayList;
 

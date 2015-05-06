@@ -1,8 +1,8 @@
-package com.ethanf.licensefragment.model;
+package com.artitk.licensefragment.model;
 
 import android.content.Context;
 
-import com.ethanf.licensefragment.utils.ResourceManager;
+import com.artitk.licensefragment.utils.ResourceManager;
 
 /**
  * License data class.

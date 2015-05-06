@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/license_fragment_background"
-    tools:context="com.ethanf.licensefragment.ScrollViewLicenseFragment">
+    tools:context="com.artitk.licensefragment.ScrollViewLicenseFragment">
 
     <TextView
         android:id="@+id/tvLicense"

@@ -1,9 +1,9 @@
-package com.ethanf.licensefragment.utils;
+package com.artitk.licensefragment.utils;
 
 import android.content.Context;
 
-import com.ethanf.licensefragment.R;
-import com.ethanf.licensefragment.model.LicenseType;
+import com.artitk.licensefragment.R;
+import com.artitk.licensefragment.model.LicenseType;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

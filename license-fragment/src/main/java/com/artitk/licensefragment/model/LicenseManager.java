@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment.model;
+package com.artitk.licensefragment.model;
 
 import android.content.Context;
 

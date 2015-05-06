@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment.example;
+package com.artitk.licensefragment.example;
 
 import android.app.Activity;
 import android.content.Intent;

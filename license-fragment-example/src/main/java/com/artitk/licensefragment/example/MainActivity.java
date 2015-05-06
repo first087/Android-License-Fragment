@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment.example;
+package com.artitk.licensefragment.example;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,14 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ethanf.licensefragment.LicenseFragmentBase;
-import com.ethanf.licensefragment.ListViewLicenseFragment;
-import com.ethanf.licensefragment.RecyclerViewLicenseFragment;
-import com.ethanf.licensefragment.ScrollViewLicenseFragment;
-import com.ethanf.licensefragment.model.CustomUI;
-import com.ethanf.licensefragment.model.License;
-import com.ethanf.licensefragment.model.LicenseID;
-import com.ethanf.licensefragment.model.LicenseType;
+import com.artitk.licensefragment.LicenseFragmentBase;
+import com.artitk.licensefragment.ListViewLicenseFragment;
+import com.artitk.licensefragment.RecyclerViewLicenseFragment;
+import com.artitk.licensefragment.ScrollViewLicenseFragment;
+import com.artitk.licensefragment.model.CustomUI;
+import com.artitk.licensefragment.model.License;
+import com.artitk.licensefragment.model.LicenseID;
+import com.artitk.licensefragment.model.LicenseType;
 
 import java.util.ArrayList;
 

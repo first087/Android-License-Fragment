@@ -1,4 +1,4 @@
-package com.ethanf.licensefragment;
+package com.artitk.licensefragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.ethanf.licensefragment.model.License;
-import com.ethanf.licensefragment.model.LicenseID;
+import com.artitk.licensefragment.model.License;
+import com.artitk.licensefragment.model.LicenseID;
 
 import java.util.ArrayList;
 
