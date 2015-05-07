@@ -2,6 +2,26 @@
 <resources>
 
     <declare-styleable name="LicenseFragment">
+        <attr name="lfLicenseID" format="integer">
+            <!-- This Library -->
+            <flag name="LICENSE_FRAGMENT"   value="0x00000000" />
+
+            <!-- Google Library -->
+            <flag name="GSON"               value="0x00000100" />
+            <!-- TODO : Add new enum here and update LicenseID.java -->
+
+            <!-- Square Library -->
+            <flag name="OTTO"               value="0x00010000" />
+            <flag name="OKHTTP"             value="0x00020000" />
+            <flag name="RETROFIT"           value="0x00040000" />
+            <flag name="PICASSO"            value="0x00080000" />
+            <!-- TODO : Add new enum here and update LicenseID.java -->
+
+            <!-- Other Library -->
+            <flag name="STATED_FRAGMENT"    value="0x01000000" />
+            <!-- TODO : Add new enum here and update LicenseID.java -->
+        </attr>
+        <attr name="lfLicenseChain" format="boolean" />
         <attr name="lfTitleBackgroundColor" format="color|reference" />
         <attr name="lfTitleTextColor" format="color|reference" />
         <attr name="lfLicenseBackgroundColor" format="color|reference" />

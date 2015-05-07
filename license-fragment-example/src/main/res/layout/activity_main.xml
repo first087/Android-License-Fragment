@@ -31,6 +31,8 @@
         android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        custom:lfLicenseID="GSON|RETROFIT|STATED_FRAGMENT"
+        custom:lfLicenseChain="true"
         custom:lfTitleBackgroundColor="@android:color/holo_green_light"
         custom:lfTitleTextColor="@android:color/holo_purple"
         custom:lfLicenseBackgroundColor="@android:color/holo_green_dark"
