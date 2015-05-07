@@ -14,6 +14,7 @@ import com.artitk.licensefragment.model.LicenseID;
 import com.artitk.licensefragment.model.LicenseManager;
 import com.artitk.licensefragment.model.License;
 import com.artitk.licensefragment.utils.ArrayManager;
+import com.artitk.licensefragment.utils.BitwiseManager;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,8 @@ public abstract class LicenseFragmentBase extends Fragment {
 
     private ArrayList<Integer> mLicenses;
     private ArrayList<License> mCustomLicenses;
+
+    private int mLicenseIDFlags;
 
     protected LicenseFragmentBase() {
         super();
@@ -86,6 +89,10 @@ public abstract class LicenseFragmentBase extends Fragment {
         }
 
         TypedArray typedArray = activity.obtainStyledAttributes(attrs, R.styleable.LicenseFragment);
+
+        mLicenseIDFlags = typedArray.getInt(R.styleable.LicenseFragment_lfLicenseID, 0);
+        mLicenseChain   = typedArray.getBoolean(R.styleable.LicenseFragment_lfLicenseChain, true);
+
         Resources resources = activity.getResources();
 
         customUI.setTitleBackgroundColor(typedArray.getColor(R.styleable.LicenseFragment_lfTitleBackgroundColor,
@@ -172,7 +179,7 @@ public abstract class LicenseFragmentBase extends Fragment {
 
         outState.putBoolean("log_enable", isLog);
 
-        outState.putIntArray("custom_ui", new int[] {
+        outState.putIntArray("custom_ui", new int[]{
                 customUI.getTitleBackgroundColor(),
                 customUI.getTitleTextColor(),
                 customUI.getLicenseBackgroundColor(),
@@ -188,12 +195,39 @@ public abstract class LicenseFragmentBase extends Fragment {
 
         mLicenses.addAll(haveArgument ? getArguments().getIntegerArrayList(ARG_LICENSE_IDS) : new ArrayList<Integer>());
 
+        addLicensesFromFlag();
+
         LicenseManager licenseManager = new LicenseManager(getActivity().getApplicationContext());
         ArrayList<License> licenses = licenseManager.withLicenseChain(mLicenseChain).getLicenses(mLicenses);
         if (mCustomLicenses != null) licenses.addAll(mCustomLicenses);
 
         if (isLog) Log.i(TAG, "Call -> onFirstTimeLaunched(ArrayList<License>)");
         onFirstTimeLaunched(licenses);
+    }
+
+    private void addLicensesFromFlag() {
+        if (mLicenseIDFlags == 0) return;;
+
+        int[] licenseIDs = {
+                /* ----- This Library ----- */
+//                LicenseID.LICENSE_FRAGMENT,   // Add by default
+                /* ----- Google Library ----- */
+                LicenseID.GSON,
+                /* ----- Square Library ----- */
+                LicenseID.OTTO,
+                LicenseID.OKHTTP,
+                LicenseID.RETROFIT,
+                LicenseID.PICASSO,
+                /* ----- Other Library ----- */
+                LicenseID.STATED_FRAGMENT
+                // TODO : Add new license constant here
+        };
+
+        BitwiseManager bitwiseManager = new BitwiseManager(mLicenseIDFlags);
+
+        for (int licenseID : licenseIDs) {
+            if (bitwiseManager.isThisFlag(licenseID)) mLicenses.add(licenseID);
+        }
     }
 
     protected abstract void onFirstTimeLaunched(ArrayList<License> licenses);

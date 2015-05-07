@@ -5,22 +5,21 @@ package com.artitk.licensefragment.model;
  */
 public final class LicenseID {
     /* ----- This Library ----- */
-    public static final int LICENSE_FRAGMENT    = 1;
+    public static final int LICENSE_FRAGMENT    = 0x00000000;
 
     /* ----- Google Library ----- */
-    public static final int GSON                = 10001;
-    // TODO : Add new constant here
+    public static final int GSON                = 0x00000100;
+    // TODO : Add new constant here and update attrs.xml
 
     /* ----- Square Library ----- */
-    public static final int OTTO                = 20001;
-    public static final int OKHTTP              = 20002;
-    public static final int RETROFIT            = 20003;
-    public static final int PICASSO             = 20004;
-    // TODO : Add new constant here
-
-    /* ----- Nuuneoi Library ----- */
-    public static final int STATED_FRAGMENT     = 30001;
+    public static final int OTTO                = 0x00010000;
+    public static final int OKHTTP              = 0x00020000;
+    public static final int RETROFIT            = 0x00040000;
+    public static final int PICASSO             = 0x00080000;
+    // TODO : Add new constant here and update attrs.xml
 
     /* ----- Other Library ----- */
-    // TODO : Add new constant here
+    public static final int STATED_FRAGMENT     = 0x01000000;
+
+    // TODO : Add new constant here and update attrs.xml
 }
