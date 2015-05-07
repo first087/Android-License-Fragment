@@ -26,21 +26,29 @@ This library for easy create fragment for open-source licenses UI.
 
 #### Support license for Library (Build-in)
 * [License Fragment](https://github.com/first087/Android-License-Fragment)
-* [StatedFragment](https://github.com/nuuneoi/StatedFragment)
 * [Gson](https://github.com/google/gson)
 * [Otto](http://square.github.io/otto/)
 * [OkHttp](http://square.github.io/okhttp/)
 * [Retrofit](http://square.github.io/retrofit/)
 * [Picasso](http://square.github.io/picasso/)
+* [StatedFragment](https://github.com/nuuneoi/StatedFragment)
 
-#### Gradle
+#### How to use
+
+#####1. Installation
+
+To use this library in your android project, just simply add the following dependency into your **build.gradle**.
+
+This library extends fragment from Support Library v4.
+
+* Gradle
 ```groovy
 dependencies {
     compile 'com.artit-k:license-fragment:1.0.0'
 }
 ```
 
-#### Maven
+* Maven
 ```xml
 <dependency>
         <groupId>com.artit-k</groupId>
@@ -49,47 +57,98 @@ dependencies {
 </dependency>
 ```
 
-#### Code Example
-*Example input.*
+#####2. Create fragment in java code
+
+*Example data.*
 ```java
 ArrayList<Integer> licenseIds = new ArrayList<>();
-licenseIds.add(LicenseID.GSON);
-licenseIds.add(LicenseID.RETROFIT);
+licenseIds.add(LicenseID.GSON);                             // Add License ID from LicenseID class
+licenseIds.add(LicenseID.RETROFIT);                         // Add License ID from LicenseID class
 ```
 
-**Example for create fragment by 1 line.**
+* **Create fragment by 1 line.** + **_Optional_** - Turn on/off License Chain feature.
 ```java
-// Ex1 - Call newInstance() using parameter ArrayList<Integer>
+// Ex1 - Call newInstance() using ArrayList<Integer>
 Fragment fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
 
-// Ex2 - Call newInstance() using parameter array + (Optional) Disable license chain
+// Ex2 - Call newInstance() using array of int + (Optional) Disable license chain
 Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }).withLicenseChain(false);
 
 // Ex3 - Call newInstance() using without parameter + (Optional) Enable license chain (default)
 Fragment fragment = RecyclerViewLicenseFragment.newInstance().withLicenseChain(true);
 ```
 
-**Optional** - Add more License and Custom licenses.
+* **_Optional_** - Add More Licenses and Custom licenses.
 ```java
-ArrayList<License> licenses = new ArrayList<>();
-licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
-licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
+ArrayList<License> customLicenses = new ArrayList<>();
+customLicenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
+customLicenses.add(new License(this, "Test Library 2", LicenseType.GPL_30,      "2002",      "Test Owner 2"));
+
 Fragment fragment = RecyclerViewLicenseFragment.newInstance()
-            .addLicense(new int[] { LicenseID.PICASSO })    // Add array (same call newInstance)
-            .addLicense(licenseIds)                         // Add ArrayList<Integer> (same call newInstance)
-            .addCustomLicense(licenses);                    // Add Custom License
+            .addLicense(new int[] { LicenseID.PICASSO })    // Add More Licenses by array of int
+            .addLicense(licenseIds)                         // Add More Licenses by ArrayList<Integer>
+            .addCustomLicense(customLicenses);              // Add Custom Licenses by ArrayList<License>
 ```
 
-**Optional** - Custom UI.
+* **_Optional_** - Customize UI.
 ```java
-CustomUI customUI = new CustomUI()                          // Create Custom UI
+CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
             .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
             .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
             .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
             .setLicenseTextColor(Color.DKGRAY);
 
 Fragment fragment = RecyclerViewLicenseFragment.newInstance()
-            .setCustomUI(customUI);                         // Set Custom UI
+            .setCustomUI(customUI);                         // Set Customize UI
+```
+
+**_Or..._**
+
+#####3. Create fragment in xml layout
+
+* **Define _custom_ namespace on root view in your layout.**
+
+```xml
+<YOUR_ROOT_VIEW
+    ...
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    ...>
+```
+
+* **Add ```fragment``` tag.** + **_Optional_** - Customize UI by attibutes. (```custom:lfTitleBackgroundColor```, ```custom:lfTitleTextColor```, ```custom:lfLicenseBackgroundColor```, ```custom:lfLicenseTextColor```)
+```xml
+    <!-- Ex1 - ScrollViewLicenseFragment -->
+    <fragment
+        android:id="@+id/sv_license_fragment"
+        android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:lfTitleBackgroundColor="@color/title_bg_color"
+        custom:lfTitleTextColor="@color/title_text_color" />
+
+    <!-- Ex2 - ListViewLicenseFragment -->
+    <fragment
+        android:id="@+id/lv_license_fragment"
+        android:name="com.artitk.licensefragment.ListViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:lfTitleBackgroundColor="@color/title_bg_color"
+        custom:lfTitleTextColor="@color/title_text_color"
+        custom:lfLicenseBackgroundColor="@color/license_bg_color"
+        custom:lfLicenseTextColor="@color/license_text_color"
+        tools:layout="@layout/layout_item_license" />
+
+    <!-- Ex3 - RecyclerViewLicenseFragment -->
+    <fragment
+        android:id="@+id/rv_license_fragment"
+        android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:lfTitleBackgroundColor="@color/title_bg_color"
+        custom:lfTitleTextColor="@color/title_text_color"
+        custom:lfLicenseBackgroundColor="@color/license_bg_color"
+        custom:lfLicenseTextColor="@color/license_text_color"
+        tools:layout="@layout/layout_item_license" />
 ```
 
 #### Screenshot Example
