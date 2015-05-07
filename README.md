@@ -106,16 +106,16 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
 
 #####3. Create fragment in xml layout
 
-* **Define _custom_ namespace on root view in your layout.**
+* **Define _whatever_ namespace on root view in your layout.**
 
 ```xml
 <YOUR_ROOT_VIEW
     ...
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     ...>
 ```
 
-* **Add ```fragment``` tag.** + **_Optional_** - Customize UI by attibutes. (```custom:lfTitleBackgroundColor```, ```custom:lfTitleTextColor```, ```custom:lfLicenseBackgroundColor```, ```custom:lfLicenseTextColor```)
+* **Add ```fragment``` tag.** + **_Optional_** - Customize UI by attibutes. (```whatever:lfTitleBackgroundColor```, ```whatever:lfTitleTextColor```, ```whatever:lfLicenseBackgroundColor```, ```whatever:lfLicenseTextColor```)
 ```xml
     <!-- Ex1 - ScrollViewLicenseFragment -->
     <fragment
@@ -123,8 +123,8 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        custom:lfTitleBackgroundColor="@color/title_bg_color"
-        custom:lfTitleTextColor="@color/title_text_color" />
+        whatever:lfTitleBackgroundColor="@color/title_bg_color"
+        whatever:lfTitleTextColor="@color/title_text_color" />
 
     <!-- Ex2 - ListViewLicenseFragment -->
     <fragment
@@ -132,10 +132,10 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        custom:lfTitleBackgroundColor="@color/title_bg_color"
-        custom:lfTitleTextColor="@color/title_text_color"
-        custom:lfLicenseBackgroundColor="@color/license_bg_color"
-        custom:lfLicenseTextColor="@color/license_text_color"
+        whatever:lfTitleBackgroundColor="@color/title_bg_color"
+        whatever:lfTitleTextColor="@color/title_text_color"
+        whatever:lfLicenseBackgroundColor="@color/license_bg_color"
+        whatever:lfLicenseTextColor="@color/license_text_color"
         tools:layout="@layout/layout_item_license" />
 
     <!-- Ex3 - RecyclerViewLicenseFragment -->
@@ -144,10 +144,10 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        custom:lfTitleBackgroundColor="@color/title_bg_color"
-        custom:lfTitleTextColor="@color/title_text_color"
-        custom:lfLicenseBackgroundColor="@color/license_bg_color"
-        custom:lfLicenseTextColor="@color/license_text_color"
+        whatever:lfTitleBackgroundColor="@color/title_bg_color"
+        whatever:lfTitleTextColor="@color/title_text_color"
+        whatever:lfLicenseBackgroundColor="@color/license_bg_color"
+        whatever:lfLicenseTextColor="@color/license_text_color"
         tools:layout="@layout/layout_item_license" />
 ```
 
