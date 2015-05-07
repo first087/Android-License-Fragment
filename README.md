@@ -115,7 +115,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
     ...>
 ```
 
-* **Add ```fragment``` tag.** + **_Optional_** - Customize UI by attibutes. (```whatever:lfTitleBackgroundColor```, ```whatever:lfTitleTextColor```, ```whatever:lfLicenseBackgroundColor```, ```whatever:lfLicenseTextColor```)
+* **Add ```fragment``` tag using attibute ```whatever:lfLicenseID```** + **_Optional_** - Turn on/off License Chain by attibute ```whatever:lfLicenseChain```. + **_Optional_** - Customize UI by attibutes ```whatever:lfTitleBackgroundColor```, ```whatever:lfTitleTextColor```, ```whatever:lfLicenseBackgroundColor```, ```whatever:lfLicenseTextColor```.
 ```xml
     <!-- Ex1 - ScrollViewLicenseFragment -->
     <fragment
@@ -123,6 +123,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        whatever:lfLicenseID="GSON|RETROFIT"
         whatever:lfTitleBackgroundColor="@color/title_bg_color"
         whatever:lfTitleTextColor="@color/title_text_color" />
 
@@ -132,6 +133,8 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        whatever:lfLicenseID="PICASSO"
+        whatever:lfLicenseChain="false"
         whatever:lfTitleBackgroundColor="@color/title_bg_color"
         whatever:lfTitleTextColor="@color/title_text_color"
         whatever:lfLicenseBackgroundColor="@color/license_bg_color"
@@ -144,6 +147,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
         android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        whatever:lfLicenseChain="true"
         whatever:lfTitleBackgroundColor="@color/title_bg_color"
         whatever:lfTitleTextColor="@color/title_text_color"
         whatever:lfLicenseBackgroundColor="@color/license_bg_color"
