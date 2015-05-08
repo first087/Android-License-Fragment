@@ -132,13 +132,13 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     whatever:lfLicenseTextColor="@color/license_text_color"
 ```
 
-#####3. Customize after create License Fragment *(Optional)*
-* **_Optional_** - Turn on/off License Chain feature.
+#####3. *(Optional)* Customize after create License Fragment
+* Turn on/off License Chain feature.
 ```java
 fragment.withLicenseChain(false);                           // Disable license chain (Default : Enable)
 ```
 
-* **_Optional_** - Add More Licenses and Custom licenses.
+* Add More Licenses and Custom licenses.
 ```java
 ArrayList<License> customLicenses = new ArrayList<>();
 customLicenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
@@ -149,7 +149,7 @@ fragment.addLicense(licenseIds)                             // Add More Licenses
 fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
 ```
 
-* **_Optional_** - Customize UI.
+* Customize UI.
 ```java
 CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
             .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
