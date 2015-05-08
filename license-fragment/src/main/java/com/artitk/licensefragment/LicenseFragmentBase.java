@@ -179,7 +179,7 @@ public abstract class LicenseFragmentBase extends Fragment {
 
         outState.putBoolean("log_enable", isLog);
 
-        outState.putIntArray("custom_ui", new int[]{
+        outState.putIntArray("custom_ui", new int[] {
                 customUI.getTitleBackgroundColor(),
                 customUI.getTitleTextColor(),
                 customUI.getLicenseBackgroundColor(),

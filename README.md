@@ -7,6 +7,8 @@
 
 This library for easy create fragment for open-source licenses UI.
 
+And library depend on fragment from **Support Library v4** and use **RecyclerView Library v7** on ```RecyclerViewLicenseFragment``` class.
+
 #### License Fragment Goals
 * **1 line** create **Fragment** for **open-source licenses** UI.
 * Support ```<fragment>```
@@ -39,12 +41,10 @@ This library for easy create fragment for open-source licenses UI.
 
 To use this library in your android project, just simply add the following dependency into your **build.gradle**.
 
-This library extends fragment from Support Library v4.
-
 * Gradle
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:1.0.0'
+    compile 'com.artit-k:license-fragment:1.0.1'
 }
 ```
 
@@ -53,7 +53,7 @@ dependencies {
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
 </dependency>
 ```
 
@@ -133,6 +133,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
 #####3. *(Optional)* Customize after create License Fragment
+
 * Turn on/off License Chain feature.
 ```java
 fragment.withLicenseChain(false);                           // Disable license chain (Default : Enable)
@@ -188,3 +189,5 @@ limitations under the License.
 ```
 
 ## Welcome to Fork.
+
+For contributor, check ```TODO``` list.
