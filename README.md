@@ -57,7 +57,9 @@ dependencies {
 </dependency>
 ```
 
-#####2. Create fragment in java code
+#####2. Create License Fragment
+
+######2.1 Create by java code
 
 *Example data.*
 ```java
@@ -66,45 +68,19 @@ licenseIds.add(LicenseID.GSON);                             // Add License ID fr
 licenseIds.add(LicenseID.RETROFIT);                         // Add License ID from LicenseID class
 ```
 
-* **Create fragment by 1 line.** + **_Optional_** - Turn on/off License Chain feature.
+* **Create License Fragment.**
 ```java
 // Ex1 - Call newInstance() using ArrayList<Integer>
 Fragment fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
 
-// Ex2 - Call newInstance() using array of int + (Optional) Disable license chain
-Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO }).withLicenseChain(false);
+// Ex2 - Call newInstance() using array of int
+Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PICASSO });
 
-// Ex3 - Call newInstance() using without parameter + (Optional) Enable license chain (default)
-Fragment fragment = RecyclerViewLicenseFragment.newInstance().withLicenseChain(true);
+// Ex3 - Call newInstance() using without parameter
+Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-* **_Optional_** - Add More Licenses and Custom licenses.
-```java
-ArrayList<License> customLicenses = new ArrayList<>();
-customLicenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
-customLicenses.add(new License(this, "Test Library 2", LicenseType.GPL_30,      "2002",      "Test Owner 2"));
-
-Fragment fragment = RecyclerViewLicenseFragment.newInstance()
-            .addLicense(new int[] { LicenseID.PICASSO })    // Add More Licenses by array of int
-            .addLicense(licenseIds)                         // Add More Licenses by ArrayList<Integer>
-            .addCustomLicense(customLicenses);              // Add Custom Licenses by ArrayList<License>
-```
-
-* **_Optional_** - Customize UI.
-```java
-CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
-            .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
-            .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
-            .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
-            .setLicenseTextColor(Color.DKGRAY);
-
-Fragment fragment = RecyclerViewLicenseFragment.newInstance()
-            .setCustomUI(customUI);                         // Set Customize UI
-```
-
-**_Or..._**
-
-#####3. Create fragment in xml layout
+######2.2 Create by xml layout
 
 * **Define _whatever_ namespace on root view in your layout.**
 
@@ -115,44 +91,73 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance()
     ...>
 ```
 
-* **Add ```fragment``` tag using attibute ```whatever:lfLicenseID```** + **_Optional_** - Turn on/off License Chain by attibute ```whatever:lfLicenseChain```. + **_Optional_** - Customize UI by attibutes ```whatever:lfTitleBackgroundColor```, ```whatever:lfTitleTextColor```, ```whatever:lfLicenseBackgroundColor```, ```whatever:lfLicenseTextColor```.
+* **Add ```fragment``` tag with attibute ```whatever:lfLicenseID```**.
 ```xml
-    <!-- Ex1 - ScrollViewLicenseFragment -->
+    <!-- Ex1 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/sv_license_fragment"
         android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        whatever:lfLicenseID="GSON|RETROFIT"
-        whatever:lfTitleBackgroundColor="@color/title_bg_color"
-        whatever:lfTitleTextColor="@color/title_text_color" />
+        whatever:lfLicenseID="GSON|RETROFIT" />
 
-    <!-- Ex2 - ListViewLicenseFragment -->
+    <!-- Ex2 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/lv_license_fragment"
         android:name="com.artitk.licensefragment.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         whatever:lfLicenseID="PICASSO"
-        whatever:lfLicenseChain="false"
-        whatever:lfTitleBackgroundColor="@color/title_bg_color"
-        whatever:lfTitleTextColor="@color/title_text_color"
-        whatever:lfLicenseBackgroundColor="@color/license_bg_color"
-        whatever:lfLicenseTextColor="@color/license_text_color"
         tools:layout="@layout/layout_item_license" />
 
-    <!-- Ex3 - RecyclerViewLicenseFragment -->
+    <!-- Ex3 - fragment tag without attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/rv_license_fragment"
         android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        whatever:lfLicenseChain="true"
-        whatever:lfTitleBackgroundColor="@color/title_bg_color"
-        whatever:lfTitleTextColor="@color/title_text_color"
-        whatever:lfLicenseBackgroundColor="@color/license_bg_color"
-        whatever:lfLicenseTextColor="@color/license_text_color"
         tools:layout="@layout/layout_item_license" />
+```
+
+* **_Optional_** - Turn on/off License Chain by attibute ```whatever:lfLicenseChain```.
+```xml
+    whatever:lfLicenseChain="false"                         <!-- Disable license chain (Default : Enable) -->
+```
+
+* **_Optional_** - Customize UI by attibutes ```whatever:lfTitleBackgroundColor```, ```whatever:lfTitleTextColor```, ```whatever:lfLicenseBackgroundColor```, ```whatever:lfLicenseTextColor```.
+```xml
+    whatever:lfTitleBackgroundColor="@color/title_bg_color"
+    whatever:lfTitleTextColor="@color/title_text_color"
+    whatever:lfLicenseBackgroundColor="@color/license_bg_color"
+    whatever:lfLicenseTextColor="@color/license_text_color"
+```
+
+#####3. Customize after create License Fragment *(Optional)*
+* **_Optional_** - Turn on/off License Chain feature.
+```java
+fragment.withLicenseChain(false);                           // Disable license chain (Default : Enable)
+```
+
+* **_Optional_** - Add More Licenses and Custom licenses.
+```java
+ArrayList<License> customLicenses = new ArrayList<>();
+customLicenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
+customLicenses.add(new License(this, "Test Library 2", LicenseType.GPL_30,      "2002",      "Test Owner 2"));
+
+fragment.addLicense(new int[] { LicenseID.PICASSO })        // Add More Licenses by array of int
+fragment.addLicense(licenseIds)                             // Add More Licenses by ArrayList<Integer>
+fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
+```
+
+* **_Optional_** - Customize UI.
+```java
+CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
+            .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
+            .setTitleTextColor(getResources().getColor(android.R.color.holo_green_dark))
+            .setLicenseBackgroundColor(Color.rgb(127, 223, 127))
+            .setLicenseTextColor(Color.DKGRAY);
+
+fragment.setCustomUI(customUI);                             // Set Customize UI
 ```
 
 #### Screenshot Example
