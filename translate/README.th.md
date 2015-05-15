@@ -5,17 +5,17 @@
 # License Fragment 
 **License Fragment Library for Android**
 
-This library for easy create fragment for display open-source licenses.
+Library นี้ ช่วยสร้าง Fragment สำหรับหน้าจอแสดงผลข้อมูล Open-source licenses ได้แบบง่าย ๆ
 
-And library depend on fragment from **[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)** and use **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** on `RecyclerViewLicenseFragment` class.
+และ Library นี้ พัฒนาต่อยอดจาก `Fragment` ใน **[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)** และใช้ **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** ในส่วนของคลาส `RecyclerViewLicenseFragment`
 
 #### License Fragment Goals
-* **1 line** create **Fragment** for display **open-source licenses**
-* Support `<fragment>` tag
-* Auto generate license chain. (Ex - If you add Otto library. It will automatic add OkHttp library.)
-* 3 Simple UI (`ScrollViewLicenseFragment`, `ListViewLicenseFragment` and `RecyclerViewLicenseFragment`)
-* Add other licenses
-* Customize UI
+* สร้าง **Fragment** สำหรับแสดงข้อมูล **Open-source licenses** ได้ง่าย ๆ ด้วยชุดคำสั่งเพียง **1 บรรทัด**
+* รองรับการใช้งานด้วย Tag `<fragment>`
+* แสดงข้อมูล License ของ Library ที่เกี่ยวข้องให้โดยอัตโนมัติ สามารถเปิด/ปิดความสามารถนี้ได้ (ตัวอย่าง – ถ้ากำหนดให้แสดงข้อมูลจาก Library Otto ก็จะแสดงข้อมูล Library OkHttp ให้อัตโนมัติ)
+* มีหน้าจอพื้นฐานให้เลือก 3 ประเภท (`ScrollViewLicenseFragment`, `ListViewLicenseFragment` และ `RecyclerViewLicenseFragment`)
+* สามารถเพิ่มข้อมูล License เองได้
+* ปรับแต่งหน้าตาของหน้าจอได้
 
 #### Build-in license type
 * Apache License 2.0
@@ -39,7 +39,7 @@ And library depend on fragment from **[Support Library v4](http://developer.andr
 
 #####1. Installation
 
-To use this library in your android project, just simply add the following dependency into your **build.gradle**.
+การใช้งาน Library ใน Android Project สามารถเพิ่ม Dependency ใน **build.gradle** ได้ ดังนี้
 
 * Gradle
 ```groovy
@@ -59,16 +59,16 @@ dependencies {
 
 #####2. Create License Fragment
 
-######2.1 Create License Fragment by java code
+######2.1 สร้าง License Fragment จาก java code
 
-*Example data.*
+*ตัวอย่างข้อมูล*
 ```java
 ArrayList<Integer> licenseIds = new ArrayList<>();
 licenseIds.add(LicenseID.GSON);                             // Add License ID from LicenseID class
 licenseIds.add(LicenseID.RETROFIT);                         // Add License ID from LicenseID class
 ```
 
-* **Create License Fragment.**
+* **สร้าง License Fragment**
 ```java
 // Ex1 - Call newInstance() using ArrayList<Integer>
 Fragment fragment = ScrollViewLicenseFragment.newInstance(licenseIds);
@@ -80,9 +80,9 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-######2.2 Create License Fragment by xml layout
+######2.2 สร้าง License Fragment จาก xml layout
 
-* **Define `whatever` namespace on root view in your layout.**
+* **ประกาศ Namespace `whatever` (อะไรก็ได้) ใน root view ของ Layout**
 
 ```xml
 <YOUR_ROOT_VIEW
@@ -91,7 +91,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     ...>
 ```
 
-* **Add `fragment` tag with attibute `whatever:lfLicenseID`**.
+* **เพิ่ม Tag `fragment` และกำหนดข้อมูล License ด้วยการกำหนด Attribute `whatever:lfLicenseID`**
 ```xml
     <!-- Ex1 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
@@ -119,12 +119,12 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
         tools:layout="@layout/layout_item_license" />
 ```
 
-* **_Optional_** - Turn on/off License Chain by attibute `whatever:lfLicenseChain`.
+* **_Optional_** - เปิด/ปิด ความสามารถการแสดงผล Library ที่เกี่ยวข้อง โดยกำหนด Attribute `whatever:lfLicenseChain`.
 ```xml
     whatever:lfLicenseChain="false"                         <!-- Disable license chain (Default : Enable) -->
 ```
 
-* **_Optional_** - Customize UI by attibutes `whatever:lfTitleBackgroundColor`, `whatever:lfTitleTextColor`, `whatever:lfLicenseBackgroundColor` and `whatever:lfLicenseTextColor`.
+* **_Optional_** - ปรับแต่งหน้าตาของหน้าจอ โดยกำหนด Attribute `whatever:lfTitleBackgroundColor`, `whatever:lfTitleTextColor`, `whatever:lfLicenseBackgroundColor` และ `whatever:lfLicenseTextColor`.
 ```xml
     whatever:lfTitleBackgroundColor="@color/title_bg_color"
     whatever:lfTitleTextColor="@color/title_text_color"
@@ -134,12 +134,12 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 
 #####3. *(Optional)* Customize after create License Fragment
 
-* Turn on/off License Chain feature.
+* เปิด/ปิด ความสามารถการแสดงผล Library ที่เกี่ยวข้อง
 ```java
 fragment.withLicenseChain(false);                           // Disable license chain (Default : Enable)
 ```
 
-* Add More Licenses and Custom licenses.
+* เพิ่มข้อมูล License อื่น ๆ
 ```java
 ArrayList<License> customLicenses = new ArrayList<>();
 customLicenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
@@ -150,7 +150,7 @@ fragment.addLicense(licenseIds)                             // Add More Licenses
 fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
 ```
 
-* Customize UI.
+* ปรับแต่งหน้าตาของหน้าจอ
 ```java
 CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
             .setTitleBackgroundColor(Color.parseColor("#7fff7f"))
@@ -190,4 +190,4 @@ limitations under the License.
 
 ## Welcome to Fork.
 
-For contributor, check `TODO` list.
+สำหรับนักพัฒนาที่อยากร่วมพัฒนา ตรวจสอบได้จาก `TODO`
