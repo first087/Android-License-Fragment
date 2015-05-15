@@ -167,9 +167,9 @@ fragment.setCustomUI(customUI);                             // Set Customize UI
 #### Inspiration
 ![Google Play Store](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-GooglePlayStore.png)
 
-![YouTube](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-ScrollViewLicenseFragment.png)
+![YouTube](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-YouTube.png)
 
-![Facebook](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-ScrollViewLicenseFragment.png)
+![Facebook](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-Facebook.png)
 
 #### License
 ```
