@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
-[![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg) ](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
+[![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment)
+
+[![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
+[![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
 
 # License Fragment 
 **License Fragment Library for Android**
@@ -162,14 +165,17 @@ fragment.setCustomUI(customUI);                             // Set Customize UI
 ```
 
 #### Screenshot
-![LicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/screen/Demo-LicenseFragment.png)
+![LicenseFragment](https://github.com/first087/Android-License-Fragment/blob/master/images/screen/Demo-LicenseFragment.png)
 
 #### Inspiration
-![Google Play Store](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-GooglePlayStore.png)
+##### Google Play Store
+![Google Play Store](https://github.com/first087/Android-License-Fragment/blob/master/images/screen/Ex-GooglePlayStore.png)
 
-![YouTube](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-YouTube.png)
+##### YouTube
+![YouTube](https://github.com/first087/Android-License-Fragment/blob/master/images/screen/Ex-YouTube.png)
 
-![Facebook](https://github.com/first087/Android-License-Fragment/blob/master/screen/Ex-Facebook.png)
+##### Facebook
+![Facebook](https://github.com/first087/Android-License-Fragment/blob/master/images/screen/Ex-Facebook.png)
 
 #### License
 ```
