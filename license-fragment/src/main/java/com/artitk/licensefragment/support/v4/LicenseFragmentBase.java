@@ -1,4 +1,4 @@
-package com.artitk.licensefragment;
+package com.artitk.licensefragment.support.v4;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import com.artitk.licensefragment.R;
 import com.artitk.licensefragment.model.CustomUI;
 import com.artitk.licensefragment.model.LicenseID;
 import com.artitk.licensefragment.model.LicenseManager;

@@ -12,10 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.artitk.licensefragment.LicenseFragmentBase;
-import com.artitk.licensefragment.ListViewLicenseFragment;
-import com.artitk.licensefragment.RecyclerViewLicenseFragment;
-import com.artitk.licensefragment.ScrollViewLicenseFragment;
+import com.artitk.licensefragment.support.v4.LicenseFragmentBase;
+import com.artitk.licensefragment.support.v4.ListViewLicenseFragment;
+import com.artitk.licensefragment.support.v4.RecyclerViewLicenseFragment;
+import com.artitk.licensefragment.support.v4.ScrollViewLicenseFragment;
 import com.artitk.licensefragment.model.CustomUI;
 import com.artitk.licensefragment.model.License;
 import com.artitk.licensefragment.model.LicenseID;
