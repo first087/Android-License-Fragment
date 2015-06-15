@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 fragmentManager.findFragmentById(R.id.navigation_drawer);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 //        if (true) return;
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment;
 
         ArrayList<Integer> licenseIds = new ArrayList<>();
