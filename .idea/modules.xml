@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LicenseFragment.iml" filepath="$PROJECT_DIR$/LicenseFragment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/license-fragment/license-fragment.iml" filepath="$PROJECT_DIR$/license-fragment/license-fragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/license-fragment-example/license-fragment-example.iml" filepath="$PROJECT_DIR$/license-fragment-example/license-fragment-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/license-fragment-support-v4/license-fragment-support-v4.iml" filepath="$PROJECT_DIR$/license-fragment-support-v4/license-fragment-support-v4.iml" />
     </modules>
   </component>
 </project>

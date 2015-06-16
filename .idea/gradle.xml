@@ -9,8 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/license-fragment" />
             <option value="$PROJECT_DIR$/license-fragment-example" />
+            <option value="$PROJECT_DIR$/license-fragment-support-v4" />
           </set>
         </option>
       </GradleProjectSettings>
