@@ -10,7 +10,7 @@
 
 This library for easy create fragment for display open-source licenses.
 
-And library depend on fragment from **[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)** and use **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** on `RecyclerViewLicenseFragment` class.
+And library depend on fragment from `android.app.Fragment` and `android.support.v4.app.Fragment` (**[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)**) and use **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** on `RecyclerViewLicenseFragment` class.
 
 #### License Fragment Goals
 * **1 line** create **Fragment** for display **open-source licenses**
@@ -38,6 +38,10 @@ And library depend on fragment from **[Support Library v4](http://developer.andr
 * [Picasso](http://square.github.io/picasso/)
 * [StatedFragment](https://github.com/nuuneoi/StatedFragment)
 
+#### Branch
+* **[master](https://github.com/first087/Android-License-Fragment)** branch for `android.app.Fragment`
+* **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch for `android.support.v4.app.Fragment`
+
 #### How to use
 
 #####1. Installation
@@ -47,7 +51,13 @@ To use this library in your android project, just simply add the following depen
 * Gradle
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:1.0.1'
+    compile 'com.artit-k:license-fragment:1.1.0'
+}
+```
+or
+```groovy
+dependencies {
+    compile 'com.artit-k:license-fragment-support-v4:1.1.0'
 }
 ```
 
@@ -56,7 +66,15 @@ dependencies {
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
+</dependency>
+```
+or
+```xml
+<dependency>
+        <groupId>com.artit-k</groupId>
+        <artifactId>license-fragment-support-v4</artifactId>
+        <version>1.1.0</version>
 </dependency>
 ```
 
