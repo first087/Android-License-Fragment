@@ -6,8 +6,8 @@
 [![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4)
 
-[![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
-[![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
+[![English](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/README.md)
+[![Thailand](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/translate/README.th.md)
 
 # License Fragment 
 **License Fragment Library for Android**
