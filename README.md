@@ -1,6 +1,10 @@
-[![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
+**[master](https://github.com/first087/Android-License-Fragment)** - [![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
 [![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment)
+
+**[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** - [![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=support-v4)](https://travis-ci.org/first087/Android-License-Fragment)
+[![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4)
 
 [![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
 [![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
@@ -49,12 +53,14 @@ And library depend on fragment from `android.app.Fragment` and `android.support.
 To use this library in your android project, just simply add the following dependency into your **build.gradle**.
 
 * Gradle
+
+For `android.app.Fragment`
 ```groovy
 dependencies {
     compile 'com.artit-k:license-fragment:1.1.0'
 }
 ```
-or
+or for `android.support.v4.app.Fragment`
 ```groovy
 dependencies {
     compile 'com.artit-k:license-fragment-support-v4:1.1.0'
@@ -62,6 +68,8 @@ dependencies {
 ```
 
 * Maven
+
+For `android.app.Fragment`
 ```xml
 <dependency>
         <groupId>com.artit-k</groupId>
@@ -69,7 +77,7 @@ dependencies {
         <version>1.1.0</version>
 </dependency>
 ```
-or
+or for `android.support.v4.app.Fragment`
 ```xml
 <dependency>
         <groupId>com.artit-k</groupId>
@@ -113,11 +121,17 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
 * **Add `fragment` tag with attibute `whatever:lfLicenseID`**.
+
+*Replace `{PACKAGE_NAME}` with...*
+
+`com.artitk.licensefragment` for `android.app.Fragment`
+
+`com.artitk.licensefragment.support.v4` for `android.support.v4.app.Fragment`
 ```xml
     <!-- Ex1 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/sv_license_fragment"
-        android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         whatever:lfLicenseID="GSON|RETROFIT" />
@@ -125,7 +139,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     <!-- Ex2 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/lv_license_fragment"
-        android:name="com.artitk.licensefragment.ListViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         whatever:lfLicenseID="PICASSO"
@@ -134,7 +148,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     <!-- Ex3 - fragment tag without attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/rv_license_fragment"
-        android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/layout_item_license" />
@@ -215,3 +229,5 @@ limitations under the License.
 ## Welcome to Fork.
 
 For contributor, check `TODO` list.
+
+Develop on **[master](https://github.com/first087/Android-License-Fragment)** branch first, then merge to **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
