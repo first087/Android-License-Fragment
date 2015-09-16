@@ -1,16 +1,20 @@
-[![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
+**[master](https://github.com/first087/Android-License-Fragment)** - [![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=master)](https://travis-ci.org/first087/Android-License-Fragment)
 [![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment)
 
-[![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
-[![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
+**[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** - [![Build Status](https://travis-ci.org/first087/Android-License-Fragment.svg?branch=support-v4)](https://travis-ci.org/first087/Android-License-Fragment)
+[![Download](https://api.bintray.com/packages/first087/maven/Android-License-Fragment/images/download.svg)](https://bintray.com/first087/maven/Android-License-Fragment/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.artit-k/license-fragment-support-v4)
+
+[![English](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/README.md)
+[![Thailand](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/translate/README.th.md)
 
 # License Fragment 
 **License Fragment Library for Android**
 
 Library นี้ ช่วยสร้าง Fragment สำหรับหน้าจอแสดงผลข้อมูล Open-source licenses ได้แบบง่าย ๆ
 
-และ Library นี้ พัฒนาต่อยอดจาก `Fragment` ใน **[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)** และใช้ **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** ในส่วนของคลาส `RecyclerViewLicenseFragment`
+และ Library นี้ พัฒนาต่อยอดจาก `android.app.Fragment` และ `android.support.v4.app.Fragment` ใน **[Support Library v4](http://developer.android.com/tools/support-library/features.html#v4)** และใช้ **[RecyclerView Library v7](http://developer.android.com/tools/support-library/features.html#v7-recyclerview)** ในส่วนของคลาส `RecyclerViewLicenseFragment`
 
 #### License Fragment Goals
 * สร้าง **Fragment** สำหรับแสดงข้อมูล **Open-source licenses** ได้ง่าย ๆ ด้วยชุดคำสั่งเพียง **1 บรรทัด**
@@ -38,6 +42,10 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 * [Picasso](http://square.github.io/picasso/)
 * [StatedFragment](https://github.com/nuuneoi/StatedFragment)
 
+#### Branch
+* **[master](https://github.com/first087/Android-License-Fragment)** branch สำหรับ `android.app.Fragment`
+* **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch สำหรับ `android.support.v4.app.Fragment`
+
 #### How to use
 
 #####1. Installation
@@ -45,18 +53,36 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 การใช้งาน Library ใน Android Project สามารถเพิ่ม Dependency ใน **build.gradle** ได้ ดังนี้
 
 * Gradle
+
+สำหรับ `android.app.Fragment`
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:1.0.1'
+    compile 'com.artit-k:license-fragment:1.1.0'
+}
+```
+หรือ สำหรับ `android.support.v4.app.Fragment`
+```groovy
+dependencies {
+    compile 'com.artit-k:license-fragment-support-v4:1.1.0'
 }
 ```
 
 * Maven
+
+สำหรับ `android.app.Fragment`
 ```xml
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>1.0.1</version>
+        <version>1.1.0</version>
+</dependency>
+```
+หรือ สำหรับ `android.support.v4.app.Fragment`
+```xml
+<dependency>
+        <groupId>com.artit-k</groupId>
+        <artifactId>license-fragment-support-v4</artifactId>
+        <version>1.1.0</version>
 </dependency>
 ```
 
@@ -95,11 +121,17 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
 * **เพิ่ม Tag `fragment` และกำหนดข้อมูล License ด้วยการกำหนด Attribute `whatever:lfLicenseID`**
+
+*แทนที่ `{PACKAGE_NAME}` ด้วย...*
+
+`com.artitk.licensefragment` สำหรับ `android.app.Fragment`
+
+`com.artitk.licensefragment.support.v4` สำหรับ `android.support.v4.app.Fragment`
 ```xml
     <!-- Ex1 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/sv_license_fragment"
-        android:name="com.artitk.licensefragment.ScrollViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.ScrollViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         whatever:lfLicenseID="GSON|RETROFIT" />
@@ -107,7 +139,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     <!-- Ex2 - fragment tag with attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/lv_license_fragment"
-        android:name="com.artitk.licensefragment.ListViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.ListViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         whatever:lfLicenseID="PICASSO"
@@ -116,7 +148,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     <!-- Ex3 - fragment tag without attribute whatever:lfLicenseID -->
     <fragment
         android:id="@+id/rv_license_fragment"
-        android:name="com.artitk.licensefragment.RecyclerViewLicenseFragment"
+        android:name="{PACKAGE_NAME}.RecyclerViewLicenseFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/layout_item_license" />
@@ -197,3 +229,5 @@ limitations under the License.
 ## Welcome to Fork.
 
 สำหรับนักพัฒนาที่อยากร่วมพัฒนา ตรวจสอบได้จาก `TODO`
+
+พัฒนาบน **[master](https://github.com/first087/Android-License-Fragment)** branch ก่อน แล้ว merge ไปยัง **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
