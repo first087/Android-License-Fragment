@@ -194,7 +194,7 @@ licenses.add(new License(this, "Custom License 1", R.raw.wtfpl, "2004", "Test Ow
 licenses.add(new License(this, "Custom License 2", R.raw.x11, "2005", "Test Owner 4"));
 ```
 
-License template variable (all are Optional)
+* License template variable (all are Optional)
 ```
 `%1$s` Year
 `%2$s` Owner Name
