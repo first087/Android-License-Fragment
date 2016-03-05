@@ -1,7 +1,6 @@
 package com.artitk.licensefragment.model;
 
 import android.content.Context;
-
 import android.support.annotation.RawRes;
 import com.artitk.licensefragment.utils.ResourceManager;
 
@@ -42,8 +41,7 @@ public class License {
      *
      * @param context {@link Context} class.
      * @param title Open-source library name.
-     * @param licenseType Type of License. Use constant from {@link LicenseType} enum.
-     *                    Don't use CUSTOM_LICENSE here.
+     * @param licenseType Type of License. Use constant from {@link LicenseType} enum. Don't use CUSTOM_LICENSE here.
      * @param year Year.
      * @param owner Owner name.
      */

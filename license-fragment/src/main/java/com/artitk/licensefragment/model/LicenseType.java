@@ -6,7 +6,6 @@ package com.artitk.licensefragment.model;
  * Reference - <a href="http://opensource.org/licenses">http://opensource.org/licenses</a>.
  */
 public enum LicenseType {
-
     APACHE_LICENSE_20,
     BSD_3_CLAUSE,
     BSD_2_CLAUSE,
