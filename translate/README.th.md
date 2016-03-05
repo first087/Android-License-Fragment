@@ -30,6 +30,7 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 * BSD 2-Clause
 * GPL-3.0
 * MIT license
+* Eclipse Public License 1.0
 
 *Reference - http://opensource.org/licenses*
 

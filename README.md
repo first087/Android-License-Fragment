@@ -30,6 +30,7 @@ And library depend on fragment from `android.app.Fragment` and `android.support.
 * BSD 2-Clause
 * GPL-3.0
 * MIT license
+* Eclipse Public License 1.0
 
 *Reference - http://opensource.org/licenses*
 
