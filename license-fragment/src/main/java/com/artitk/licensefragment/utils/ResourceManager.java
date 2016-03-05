@@ -51,6 +51,7 @@ public class ResourceManager {
             case BSD_2_CLAUSE:          return R.raw.bsd_2_clause;
             case GPL_30:                return R.raw.gpl_30;
             case MIT_LICENSE:           return R.raw.mit_license;
+            case EPL_10:                return R.raw.epl_v10;
             // TODO : Add new license type & return raw file id here
             default:            throw new IllegalArgumentException();
         }
