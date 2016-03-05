@@ -227,6 +227,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+#### Contributors
+* [Blazei](https://github.com/Blazei)
+
 ## Welcome to Fork.
 
 สำหรับนักพัฒนาที่อยากร่วมพัฒนา ตรวจสอบได้จาก `TODO`
