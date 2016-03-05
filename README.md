@@ -9,7 +9,7 @@
 [![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
 [![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
 
-# License Fragment 
+# License Fragment
 **License Fragment Library for Android**
 
 This library for easy create fragment for display open-source licenses.
@@ -49,7 +49,7 @@ And library depend on fragment from `android.app.Fragment` and `android.support.
 
 #### How to use
 
-#####1. Installation
+##### 1. Installation
 
 To use this library in your android project, just simply add the following dependency into your **build.gradle**.
 
@@ -87,9 +87,9 @@ or for `android.support.v4.app.Fragment`
 </dependency>
 ```
 
-#####2. Create License Fragment
+##### 2. Create License Fragment
 
-######2.1 Create License Fragment by java code
+###### 2.1 Create License Fragment by java code
 
 *Example data.*
 ```java
@@ -110,7 +110,7 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-######2.2 Create License Fragment by xml layout
+###### 2.2 Create License Fragment by xml layout
 
 * **Define `whatever` namespace on root view in your layout.**
 
@@ -168,7 +168,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     whatever:lfLicenseTextColor="@color/license_text_color"
 ```
 
-#####3. *(Optional)* Customize after create License Fragment
+##### 3. *(Optional)* Customize after create License Fragment
 
 * Turn on/off License Chain feature.
 ```java
@@ -231,4 +231,5 @@ limitations under the License.
 
 For contributor, check `TODO` list.
 
-Develop on **[master](https://github.com/first087/Android-License-Fragment)** branch first, then merge to **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
+1. Develop on **your branch** start from lasted commit on **[master](https://github.com/first087/Android-License-Fragment)** branch.
+2. Create pull request to **[dev](https://github.com/first087/Android-License-Fragment/tree/dev)** branch.

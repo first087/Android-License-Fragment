@@ -9,7 +9,7 @@
 [![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
 [![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
 
-# License Fragment 
+# License Fragment
 **License Fragment Library for Android**
 
 Library นี้ ช่วยสร้าง Fragment สำหรับหน้าจอแสดงผลข้อมูล Open-source licenses ได้แบบง่าย ๆ
@@ -49,7 +49,7 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 
 #### How to use
 
-#####1. Installation
+##### 1. Installation
 
 การใช้งาน Library ใน Android Project สามารถเพิ่ม Dependency ใน **build.gradle** ได้ ดังนี้
 
@@ -87,9 +87,9 @@ dependencies {
 </dependency>
 ```
 
-#####2. Create License Fragment
+##### 2. Create License Fragment
 
-######2.1 สร้าง License Fragment จาก java code
+###### 2.1 สร้าง License Fragment จาก java code
 
 *ตัวอย่างข้อมูล*
 ```java
@@ -110,7 +110,7 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-######2.2 สร้าง License Fragment จาก xml layout
+###### 2.2 สร้าง License Fragment จาก xml layout
 
 * **ประกาศ Namespace `whatever` (อะไรก็ได้) ใน root view ของ Layout**
 
@@ -168,7 +168,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     whatever:lfLicenseTextColor="@color/license_text_color"
 ```
 
-#####3. *(Optional)* Customize after create License Fragment
+##### 3. *(Optional)* Customize after create License Fragment
 
 * เปิด/ปิด ความสามารถการแสดงผล Library ที่เกี่ยวข้อง
 ```java
@@ -231,4 +231,5 @@ limitations under the License.
 
 สำหรับนักพัฒนาที่อยากร่วมพัฒนา ตรวจสอบได้จาก `TODO`
 
-พัฒนาบน **[master](https://github.com/first087/Android-License-Fragment)** branch ก่อน แล้ว merge ไปยัง **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
+1. พัฒนาบน **branch ของคุณ** โดยเริ่มจาก commit ล่าสุดบน branch **[master](https://github.com/first087/Android-License-Fragment)**
+2. สร้าง pull request มาที่ branch ก่อน แล้ว merge ไปยัง branch **[dev](https://github.com/first087/Android-License-Fragment/tree/dev)**
