@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
                 ArrayList<License> licenses = new ArrayList<>();
                 licenses.add(new License(this, "Test Library 1", LicenseType.MIT_LICENSE, "2000-2001", "Test Owner 1"));
                 licenses.add(new License(this, "Test Library 2", LicenseType.GPL_30, "2002", "Test Owner 2"));
+                licenses.add(new License(this, "Test Library 3", LicenseType.EPL_10, "2003", "Test Owner 3"));
                 fragment = RecyclerViewLicenseFragment.newInstance()    // Call newInstance() using without parameter
                         .setLog(true)                                   // Enable Log
                         .withLicenseChain(true)                         // Enable license chain (default)
