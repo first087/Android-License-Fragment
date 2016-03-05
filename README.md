@@ -186,6 +186,21 @@ fragment.addLicense(licenseIds)                             // Add More Licenses
 fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
 ```
 
+* Add License with Your own license template.
+```java
+// Add License Template in /res/raw
+ArrayList<License> customLicenses = new ArrayList<>();
+licenses.add(new License(this, "Custom License 1", R.raw.wtfpl, "2004", "Test Owner 3"));
+licenses.add(new License(this, "Custom License 2", R.raw.x11, "2005", "Test Owner 4"));
+```
+
+License template variable (all are Optional)
+```
+`%1$s` Year
+`%2$s` Owner Name
+`%3$s` Project/Library Name
+```
+
 * Customize UI.
 ```java
 CustomUI customUI = new CustomUI()                          // Create Customize UI from CustomUI class
