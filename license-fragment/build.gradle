@@ -1,5 +1,30 @@
 apply plugin: 'com.android.library'
 
+
+ext {
+    bintrayRepo         = 'maven'
+    bintrayName         = 'Android-License-Fragment'
+
+    publishedGroupId    = 'com.artit-k'
+    libraryName         = 'Android-License-Fragment'
+    artifact            = 'license-fragment'
+
+    libraryDescription  = 'This library for easy create fragment for display open-source licenses.'
+
+    siteUrl             = 'https://github.com/first087/Android-License-Fragment'
+    gitUrl              = 'https://github.com/first087/Android-License-Fragment.git'
+
+    libraryVersion      = '1.1.0'
+
+    developerId         = 'first087'
+    developerName       = 'Artit Kiuwilai'
+    developerEmail      = 'first087@gmail.com'
+
+    licenseName         = 'The Apache Software License, Version 2.0'
+    licenseUrl          = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses         = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -15,5 +40,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.2.0'
 }
 
-//apply from: '../maven.gradle'
-//apply from: '../bintray.gradle'
+apply from: '../maven.gradle'
+apply from: '../bintray.gradle'
