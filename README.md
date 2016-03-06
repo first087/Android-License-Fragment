@@ -9,7 +9,7 @@
 [![English](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/README.md)
 [![Thailand](https://github.com/first087/Android-License-Fragment/blob/master/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/master/translate/README.th.md)
 
-# License Fragment 
+# License Fragment
 **License Fragment Library for Android**
 
 This library for easy create fragment for display open-source licenses.
@@ -30,6 +30,7 @@ And library depend on fragment from `android.app.Fragment` and `android.support.
 * BSD 2-Clause
 * GPL-3.0
 * MIT license
+* Eclipse Public License 1.0
 
 *Reference - http://opensource.org/licenses*
 
@@ -48,7 +49,7 @@ And library depend on fragment from `android.app.Fragment` and `android.support.
 
 #### How to use
 
-#####1. Installation
+##### 1. Installation
 
 To use this library in your android project, just simply add the following dependency into your **build.gradle**.
 
@@ -86,9 +87,9 @@ or for `android.support.v4.app.Fragment`
 </dependency>
 ```
 
-#####2. Create License Fragment
+##### 2. Create License Fragment
 
-######2.1 Create License Fragment by java code
+###### 2.1 Create License Fragment by java code
 
 *Example data.*
 ```java
@@ -109,7 +110,7 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-######2.2 Create License Fragment by xml layout
+###### 2.2 Create License Fragment by xml layout
 
 * **Define `whatever` namespace on root view in your layout.**
 
@@ -167,7 +168,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     whatever:lfLicenseTextColor="@color/license_text_color"
 ```
 
-#####3. *(Optional)* Customize after create License Fragment
+##### 3. *(Optional)* Customize after create License Fragment
 
 * Turn on/off License Chain feature.
 ```java
@@ -183,6 +184,21 @@ customLicenses.add(new License(this, "Test Library 2", LicenseType.GPL_30,      
 fragment.addLicense(new int[] { LicenseID.PICASSO })        // Add More Licenses by array of int
 fragment.addLicense(licenseIds)                             // Add More Licenses by ArrayList<Integer>
 fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
+```
+
+* Add License with Your own license template.
+```java
+// Add License Template in /res/raw
+ArrayList<License> customLicenses = new ArrayList<>();
+licenses.add(new License(this, "Custom License 1", R.raw.wtfpl, "2004", "Test Owner 3"));
+licenses.add(new License(this, "Custom License 2", R.raw.x11, "2005", "Test Owner 4"));
+```
+
+* License template variable (all are Optional)
+```
+`%1$s` Year
+`%2$s` Owner Name
+`%3$s` Project/Library Name
 ```
 
 * Customize UI.
@@ -226,8 +242,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+#### Contributors
+* [Blazei](https://github.com/Blazei)
+
 ## Welcome to Fork.
 
 For contributor, check `TODO` list.
 
-Develop on **[master](https://github.com/first087/Android-License-Fragment)** branch first, then merge to **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
+1. Develop on **your branch** start from lasted commit on **[master](https://github.com/first087/Android-License-Fragment)** branch.
+2. Create pull request to **[dev](https://github.com/first087/Android-License-Fragment/tree/dev)** branch.
