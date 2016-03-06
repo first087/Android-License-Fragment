@@ -10,6 +10,8 @@ public enum LicenseType {
     BSD_3_CLAUSE,
     BSD_2_CLAUSE,
     GPL_30,
-    MIT_LICENSE
+    MIT_LICENSE,
+    EPL_10,
     // TODO : Add new license type here
+    CUSTOM_LICENSE
 }

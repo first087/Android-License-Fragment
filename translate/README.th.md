@@ -9,7 +9,7 @@
 [![English](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/United-States-of-Americ-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/README.md)
 [![Thailand](https://github.com/first087/Android-License-Fragment/blob/support-v4/images/flag/Thailand-Flag-icon.png)](https://github.com/first087/Android-License-Fragment/blob/support-v4/translate/README.th.md)
 
-# License Fragment 
+# License Fragment
 **License Fragment Library for Android**
 
 Library นี้ ช่วยสร้าง Fragment สำหรับหน้าจอแสดงผลข้อมูล Open-source licenses ได้แบบง่าย ๆ
@@ -30,6 +30,7 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 * BSD 2-Clause
 * GPL-3.0
 * MIT license
+* Eclipse Public License 1.0
 
 *Reference - http://opensource.org/licenses*
 
@@ -48,7 +49,7 @@ Library นี้ ช่วยสร้าง Fragment สำหรับหน�
 
 #### How to use
 
-#####1. Installation
+##### 1. Installation
 
 การใช้งาน Library ใน Android Project สามารถเพิ่ม Dependency ใน **build.gradle** ได้ ดังนี้
 
@@ -86,9 +87,9 @@ dependencies {
 </dependency>
 ```
 
-#####2. Create License Fragment
+##### 2. Create License Fragment
 
-######2.1 สร้าง License Fragment จาก java code
+###### 2.1 สร้าง License Fragment จาก java code
 
 *ตัวอย่างข้อมูล*
 ```java
@@ -109,7 +110,7 @@ Fragment fragment = ListViewLicenseFragment.newInstance(new int[] { LicenseID.PI
 Fragment fragment = RecyclerViewLicenseFragment.newInstance();
 ```
 
-######2.2 สร้าง License Fragment จาก xml layout
+###### 2.2 สร้าง License Fragment จาก xml layout
 
 * **ประกาศ Namespace `whatever` (อะไรก็ได้) ใน root view ของ Layout**
 
@@ -167,7 +168,7 @@ Fragment fragment = RecyclerViewLicenseFragment.newInstance();
     whatever:lfLicenseTextColor="@color/license_text_color"
 ```
 
-#####3. *(Optional)* Customize after create License Fragment
+##### 3. *(Optional)* Customize after create License Fragment
 
 * เปิด/ปิด ความสามารถการแสดงผล Library ที่เกี่ยวข้อง
 ```java
@@ -183,6 +184,21 @@ customLicenses.add(new License(this, "Test Library 2", LicenseType.GPL_30,      
 fragment.addLicense(new int[] { LicenseID.PICASSO })        // Add More Licenses by array of int
 fragment.addLicense(licenseIds)                             // Add More Licenses by ArrayList<Integer>
 fragment.addCustomLicense(customLicenses);                  // Add Custom Licenses by ArrayList<License>
+```
+
+* เพื่ม License อื่น ๆ ด้วย license template ของคุณเอง
+```java
+// Add License Template in /res/raw
+ArrayList<License> customLicenses = new ArrayList<>();
+licenses.add(new License(this, "Custom License 1", R.raw.wtfpl, "2004", "Test Owner 3"));
+licenses.add(new License(this, "Custom License 2", R.raw.x11, "2005", "Test Owner 4"));
+```
+
+* ตัวแปรที่ใช้ใน License template (ทุกตัวแปรเป็น Optional ไม่ต้องใช้ก็ได้)
+```
+`%1$s` Year
+`%2$s` Owner Name
+`%3$s` Project/Library Name
 ```
 
 * ปรับแต่งหน้าตาของหน้าจอ
@@ -226,8 +242,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+#### Contributors
+* [Blazei](https://github.com/Blazei)
+
 ## Welcome to Fork.
 
 สำหรับนักพัฒนาที่อยากร่วมพัฒนา ตรวจสอบได้จาก `TODO`
 
-พัฒนาบน **[master](https://github.com/first087/Android-License-Fragment)** branch ก่อน แล้ว merge ไปยัง **[support-v4](https://github.com/first087/Android-License-Fragment/tree/support-v4)** branch.
+1. พัฒนาบน **branch ของคุณ** โดยเริ่มจาก commit ล่าสุดบน branch **[master](https://github.com/first087/Android-License-Fragment)**
+2. สร้าง pull request มาที่ branch ก่อน แล้ว merge ไปยัง branch **[dev](https://github.com/first087/Android-License-Fragment/tree/dev)**

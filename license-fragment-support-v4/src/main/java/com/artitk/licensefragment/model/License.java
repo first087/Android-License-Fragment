@@ -1,7 +1,7 @@
 package com.artitk.licensefragment.model;
 
 import android.content.Context;
-
+import android.support.annotation.RawRes;
 import com.artitk.licensefragment.utils.ResourceManager;
 
 /**
@@ -11,6 +11,7 @@ public class License {
 
     private Context context;
     private String title;
+    private int licenseTemplateRawId;
     private LicenseType licenseType;
     private String year;
     private String owner;
@@ -40,7 +41,7 @@ public class License {
      *
      * @param context {@link Context} class.
      * @param title Open-source library name.
-     * @param licenseType Type of License. Use constant from {@link LicenseType} enum.
+     * @param licenseType Type of License. Use constant from {@link LicenseType} enum. Don't use CUSTOM_LICENSE here.
      * @param year Year.
      * @param owner Owner name.
      */
@@ -50,6 +51,20 @@ public class License {
         this.licenseType = licenseType;
         this.year        = year;
         this.owner       = owner;
+    }
+
+    /**
+     * Use this constructor for create instance of Custom License Type
+     *
+     * @param context {@link Context} class.
+     * @param title Open-source library name.
+     * @param licenseTemplateRawId Raw ID of custom license template.
+     * @param year Year.
+     * @param owner Owner name.
+     */
+    public License(Context context, String title, @RawRes int licenseTemplateRawId, String year, String owner) {
+        this(context, title, LicenseType.CUSTOM_LICENSE, year, owner);
+        this.licenseTemplateRawId = licenseTemplateRawId;
     }
 
     /**
@@ -63,7 +78,12 @@ public class License {
      * @return Wording for display Open-source license.
      */
     public String getLicense() {
-        return String.format(new ResourceManager(context).readRawFile(licenseType), year, owner);
+        switch (licenseType) {
+            case CUSTOM_LICENSE:
+                return String.format(new ResourceManager(context).readRawFile(licenseTemplateRawId), year, owner, title);
+            default:
+                return String.format(new ResourceManager(context).readRawFile(licenseType), year, owner);
+        }
     }
 
 }
