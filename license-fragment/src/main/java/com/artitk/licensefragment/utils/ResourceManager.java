@@ -24,7 +24,7 @@ public class ResourceManager {
         return readRawFile(getRawId(licenseType));
     }
 
-    private String readRawFile(int rawId) {
+    public String readRawFile(int rawId) {
         InputStream inputStream = context.getResources().openRawResource(rawId);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
