@@ -219,7 +219,6 @@ public abstract class LicenseFragmentBase extends Fragment {
                 LicenseID.RETROFIT,
                 LicenseID.PICASSO,
                 /* ----- Other Library ----- */
-                LicenseID.STATED_FRAGMENT
                 // TODO : Add new license constant here
         };
 

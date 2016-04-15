@@ -38,7 +38,6 @@ public class LicenseManager {
     private int[] getLicenseChains(int licenseID) {
         switch (licenseID) {
             case LicenseID.RETROFIT:            return new int[] { LicenseID.OKHTTP };
-            case LicenseID.STATED_FRAGMENT:     return new int[] { LicenseID.OTTO };
             // TODO : Add reference license here
             default:                            return new int[] { };
         }
