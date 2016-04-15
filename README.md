@@ -58,13 +58,13 @@ To use this library in your android project, just simply add the following depen
 For `android.app.Fragment`
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment:1.2.0'
+    compile 'com.artit-k:license-fragment:1.3.0'
 }
 ```
 or for `android.support.v4.app.Fragment`
 ```groovy
 dependencies {
-    compile 'com.artit-k:license-fragment-support-v4:1.2.0'
+    compile 'com.artit-k:license-fragment-support-v4:1.3.0'
 }
 ```
 
@@ -75,7 +75,7 @@ For `android.app.Fragment`
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
 </dependency>
 ```
 or for `android.support.v4.app.Fragment`
@@ -83,7 +83,7 @@ or for `android.support.v4.app.Fragment`
 <dependency>
         <groupId>com.artit-k</groupId>
         <artifactId>license-fragment-support-v4</artifactId>
-        <version>1.2.0</version>
+        <version>1.3.0</version>
 </dependency>
 ```
 
