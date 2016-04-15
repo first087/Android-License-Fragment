@@ -18,7 +18,7 @@
             <!-- TODO : Add new enum here and update LicenseID.java -->
 
             <!-- Other Library -->
-            <flag name="STATED_FRAGMENT"    value="0x01000000" />
+<!--            <flag name="OTHER_LIB"          value="0x01000000" /> -->
             <!-- TODO : Add new enum here and update LicenseID.java -->
         </attr>
         <attr name="lfLicenseChain" format="boolean" />
