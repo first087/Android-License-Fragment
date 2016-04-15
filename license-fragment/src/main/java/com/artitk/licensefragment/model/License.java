@@ -26,11 +26,10 @@ public class License {
             case LicenseID.GSON:                title = "Gson";             licenseType = LicenseType.APACHE_LICENSE_20;    year = "2008";  owner = "Google Inc.";          break;
             /* ----- Square Library ----- */
             case LicenseID.OTTO:                title = "Otto";             licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
-            case LicenseID.OKHTTP:              title = "OkHttp";           licenseType = LicenseType.APACHE_LICENSE_20;    year = "2014";  owner = "Square, Inc.";         break;
+            case LicenseID.OKHTTP:              title = "OkHttp";           licenseType = LicenseType.APACHE_LICENSE_20;    year = "2016";  owner = "Square, Inc.";         break;
             case LicenseID.RETROFIT:            title = "Retrofit";         licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
             case LicenseID.PICASSO:             title = "Picasso";          licenseType = LicenseType.APACHE_LICENSE_20;    year = "2013";  owner = "Square, Inc.";         break;
             /* ----- Other Library ----- */
-            case LicenseID.STATED_FRAGMENT:     title = "StatedFragment";   licenseType = LicenseType.APACHE_LICENSE_20;    year = "2015";  owner = "Sittiphol Phanvilai";  break;
             // TODO : Add new license case here
             default:                            throw new IllegalArgumentException();
         }

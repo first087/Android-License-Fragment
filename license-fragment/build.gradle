@@ -14,7 +14,7 @@ ext {
     siteUrl             = 'https://github.com/first087/Android-License-Fragment'
     gitUrl              = 'https://github.com/first087/Android-License-Fragment.git'
 
-    libraryVersion      = '1.2.1'
+    libraryVersion      = '1.3.0'
 
     developerId         = 'first087'
     developerName       = 'Artit Kiuwilai'

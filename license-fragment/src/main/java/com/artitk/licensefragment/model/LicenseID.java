@@ -19,7 +19,7 @@ public final class LicenseID {
     // TODO : Add new constant here and update attrs.xml
 
     /* ----- Other Library ----- */
-    public static final int STATED_FRAGMENT     = 0x01000000;
+//    public static final int OTHER_LIB           = 0x01000000;
 
     // TODO : Add new constant here and update attrs.xml
 }
