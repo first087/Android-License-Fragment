@@ -14,7 +14,7 @@ ext {
     siteUrl             = 'https://github.com/first087/Android-License-Fragment'
     gitUrl              = 'https://github.com/first087/Android-License-Fragment.git'
 
-    libraryVersion      = '1.2.0'
+    libraryVersion      = '1.2.1'
 
     developerId         = 'first087'
     developerName       = 'Artit Kiuwilai'
@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:recyclerview-v7:23.2.1'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
 }
 
 apply from: '../maven.gradle'
